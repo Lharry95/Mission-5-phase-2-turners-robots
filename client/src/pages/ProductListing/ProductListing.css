@@ -1,0 +1,16 @@
+.product-listing-page {
+  padding: 2rem;
+}
+
+.listing-card {
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.listing-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
