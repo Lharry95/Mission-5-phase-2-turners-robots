@@ -1,9 +1,10 @@
 import React from "react";
+import ComparisonColumnData from "./components/comparisonColumnData";
 
 function comparisonTable() {
   return (
     <div>
-      <h1>Comparison Table</h1>
+      <ComparisonColumnData />
     </div>
   );
 }
