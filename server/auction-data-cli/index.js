@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const AuctionData = require("./models/auctionData");
+const { AuctionData, Item } = require("./models/auctionData");
 const connectingDb = require("./db/databaseConnection");
 const seedData = require("./data/seedData");
 
@@ -25,6 +25,18 @@ const addAuction = async (auction) => {
     });
   } catch (error) {
     console.error("Sorry! Couldn't add the auction", error);
+  } finally {
+    mongoose.connection.close();
+  }
+};
+
+const addItem = async (item) => {
+  try {
+    await Item.create(item).then((item) => {
+      console.log("New Item Added");
+    });
+  } catch (error) {
+    console.error("Sorry! Couldn't add your item", error);
   } finally {
     mongoose.connection.close();
   }
@@ -118,4 +130,5 @@ module.exports = {
   listAuctions,
   seedAuctions,
   deleteAll,
+  addItem,
 };

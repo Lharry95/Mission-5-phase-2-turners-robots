@@ -16,8 +16,17 @@ app.get("/", (req, res) => {
 });
 
 app.get("/comparisontable", async (req, res) => {
-  const items = await Item.find();
-  res.json(items);
+  try {
+    const items = await Item.find();
+    res.json(items);
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: "Error! Couldn't retrieve items",
+        error: error.message,
+      });
+  }
 });
 
 const PORT = process.env.PORT || 3000;

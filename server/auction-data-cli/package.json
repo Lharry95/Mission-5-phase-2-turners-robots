@@ -1,10 +1,12 @@
 {
-  "name": "auction-data-cli",
+  "name": "trademe-cli",
   "version": "1.0.0",
-  "description": "auction-data-cli",
+  "description": "trademe-cli",
   "main": "index.js",
   "preferGlobal": true,
-  "bin": "./commands/commands.js",
+  "bin": {
+    "trademe-cli": "./commands/commands.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
