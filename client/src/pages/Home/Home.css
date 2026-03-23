@@ -3,8 +3,8 @@
 }
 
 .home-main {
-  margin-top: 80px;
-  padding: 0 24px;
+  margin-top: 200px;
+  padding: 16px 24px 0 24px;
 }
 
 /* Category Tabs */
@@ -12,21 +12,22 @@
   display: flex;
   gap: 8px;
   padding: 16px 0;
-  border-bottom: 1px solid #f2f2f2;
 }
 
 .category-tab {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
-  border-radius: 999px;
+  padding: 12px 24px;
+  border-radius: 12px;
   cursor: pointer;
   font-size: 14px;
   color: #44413c;
   font-weight: 500;
   transition: all 0.2s;
-  border: 1px solid transparent;
+  background-color: #ffffff;
+  border: 1px solid #f2f2f2;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 .category-tab:hover {
@@ -34,8 +35,13 @@
   color: #0037cd;
 }
 
+.category-tab.active {
+  border: 1px solid #0037cd;
+  color: #0037cd;
+}
+
 .category-icon {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .category-name {

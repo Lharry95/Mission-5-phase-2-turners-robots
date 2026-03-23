@@ -10,27 +10,41 @@ function Header() {
   const suggestions = [
     { type: "Recent", items: ["wooden desk"] },
     { type: "Suggestions", items: ["wooden desk", "desk table", "designer"] },
-    {
-      type: "Categories",
-      items: ["Desire", "Design", "Desk & table"],
-    },
-    {
-      type: "Stores",
-      items: ["Design Withdrawals", "Designer Frames Ltd"],
-    },
+    { type: "Categories", items: ["Desire", "Design", "Desk & table"] },
+    { type: "Stores", items: ["Design Withdrawals", "Designer Frames Ltd"] },
   ];
 
   return (
     <header className="header">
-      <div className="header-inner">
-        {/* Logo */}
+      {/* Top Row - Logo and Nav Icons */}
+      <div className="header-top">
         <div className="header-logo">
-          <span className="logo-trade">trade</span>
-          <span className="logo-me">me</span>
-          <span className="logo-kiwi">🐦</span>
+          <img src="/src/common/logo.png" alt="Trade Me" className="logo-img" />
         </div>
+        <nav className="header-nav">
+          <div className="nav-item">
+            ⚖️ <span>Comparison</span>
+          </div>
+          <div className="nav-item">
+            ☰ <span>Categories</span>
+          </div>
+          <div className="nav-item">
+            👁 <span>Watchlist</span>
+          </div>
+          <div className="nav-item">
+            ♡ <span>Favourites</span>
+          </div>
+          <div className="nav-item">
+            ✏️ <span>Start a listing</span>
+          </div>
+          <div className="nav-item">
+            👤 <span>My Trade Me</span>
+          </div>
+        </nav>
+      </div>
 
-        {/* Search Bar */}
+      {/* Bottom Row - Search Bar */}
+      <div className="header-bottom">
         <div className="header-search-wrapper">
           <div className={`search-bar ${searchFocused ? "focused" : ""}`}>
             <span className="search-icon">🔍</span>
@@ -75,28 +89,6 @@ function Header() {
             </div>
           )}
         </div>
-
-        {/* Nav Icons */}
-        <nav className="header-nav">
-          <div className="nav-item">
-            ⚖️ <span>Comparison</span>
-          </div>
-          <div className="nav-item">
-            ☰ <span>Categories</span>
-          </div>
-          <div className="nav-item">
-            👁 <span>Watchlist</span>
-          </div>
-          <div className="nav-item">
-            ♡ <span>Favourites</span>
-          </div>
-          <div className="nav-item">
-            ✏️ <span>Start a listing</span>
-          </div>
-          <div className="nav-item">
-            👤 <span>My Trade Me</span>
-          </div>
-        </nav>
       </div>
     </header>
   );

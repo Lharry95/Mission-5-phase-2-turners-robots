@@ -9,12 +9,18 @@
   font-family: "Inter", sans-serif;
 }
 
-.header-inner {
+.header-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 24px;
-  gap: 16px;
+}
+
+.header-bottom {
+  padding: 8px 24px 12px 24px;
+  border-top: 1px solid #f2f2f2;
+  display: flex;
+  justify-content: center;
 }
 
 /* Logo */
@@ -43,8 +49,7 @@
 /* Search Bar */
 .header-search-wrapper {
   position: relative;
-  flex: 1;
-  max-width: 600px;
+  width: 60%;
 }
 
 .search-bar {
