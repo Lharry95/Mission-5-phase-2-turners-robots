@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
   res.send("Serving is running..");
 });
 
-app.get("/comparisontable", async (req, res) => {
+app.get("/comparisontable/compare", async (req, res) => {
   try {
     const items = await Item.find();
     res.json(items);
@@ -27,7 +27,7 @@ app.get("/comparisontable", async (req, res) => {
   }
 });
 
-app.get("/comparisontable/compare", async (req, res) => {
+app.get("/comparisontable", async (req, res) => {
   try {
     const ids = req.query.items.split(",");
     const products = await Product.find({ _id: { $in: ids } });
