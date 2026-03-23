@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const { Item } = require("./auction-data-cli/models/auctionData");
 const connectDB = require("./config/db");
 const listingRoutes = require("./routes/listingRoutes");
 
@@ -13,6 +14,18 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Server is running.");
+});
+
+app.get("/comparisontable", async (req, res) => {
+  try {
+    const items = await Item.find();
+    res.json(items);
+  } catch (error) {
+    res.status(500).json({
+      message: "Error! Couldn't retrieve items",
+      error: error.message,
+    });
+  }
 });
 
 app.use("/api/listings", listingRoutes);

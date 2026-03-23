@@ -1,0 +1,169 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f2f2f2;
+  font-family: "Inter", sans-serif;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 24px;
+}
+
+.header-bottom {
+  padding: 8px 24px 12px 24px;
+  border-top: 1px solid #f2f2f2;
+  display: flex;
+  justify-content: center;
+}
+
+/* Logo */
+.header-logo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.logo-trade {
+  color: #4b61d1;
+}
+
+.logo-me {
+  color: #f0a92e;
+}
+
+.logo-kiwi {
+  font-size: 20px;
+  margin-left: 4px;
+}
+
+/* Search Bar */
+.header-search-wrapper {
+  position: relative;
+  width: 60%;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f2f2f2;
+  border-radius: 999px;
+  padding: 8px 8px 8px 16px;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.search-bar.focused {
+  background-color: #ffffff;
+  border: 1px solid #d9d9d9;
+}
+
+.search-icon {
+  font-size: 16px;
+  color: #7f7c77;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #44413c;
+}
+
+.search-btn {
+  background-color: #44413c;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-btn.active {
+  background-color: #0037cd;
+}
+
+/* Search Overlay */
+.search-overlay {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  padding: 16px;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-group {
+  margin-bottom: 12px;
+}
+
+.suggestion-type {
+  font-size: 12px;
+  color: #a5a5a5;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.suggestion-item {
+  font-size: 14px;
+  color: #44413c;
+  padding: 4px 0;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.suggestion-item:hover {
+  color: #0037cd;
+}
+
+.browse-categories {
+  font-size: 14px;
+  color: #0037cd;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+/* Nav Icons */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+  color: #44413c;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  color: #0037cd;
+}
+
+.nav-item span {
+  margin-top: 2px;
+}
