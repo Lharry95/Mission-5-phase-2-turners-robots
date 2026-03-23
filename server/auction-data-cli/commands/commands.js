@@ -10,6 +10,8 @@ const {
   seedAuctions,
   deleteAll,
   addItem,
+  listItems,
+  deleteAllItems,
 } = require("../index.js");
 const inquirer = require("inquirer").default;
 const { questionsForAuctions, questionsForItems } = require("./prompts.js");
@@ -75,5 +77,16 @@ program
   .action(() => {
     inquirer.prompt(questionsForItems).then((answers) => addItem(answers));
   });
+
+program
+  .command("listItems")
+  .description("List of all added auctions")
+  .action(() => listItems());
+
+//   delete all items from mongoDB
+program
+  .command("deleteAllItems")
+  .description("Deleting all auctions from MongoDB")
+  .action(() => deleteAllItems());
 
 program.parse(process.argv);

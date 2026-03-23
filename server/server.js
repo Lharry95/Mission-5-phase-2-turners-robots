@@ -20,12 +20,23 @@ app.get("/comparisontable", async (req, res) => {
     const items = await Item.find();
     res.json(items);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Error! Couldn't retrieve items",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "Error! Couldn't retrieve items",
+      error: error.message,
+    });
+  }
+});
+
+app.get("/comparisontable/compare", async (req, res) => {
+  try {
+    const ids = req.query.items.split(",");
+    const products = await Product.find({ _id: { $in: ids } });
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({
+      message: "Error! Couldn't retrieve items",
+      error: error.message,
+    });
   }
 });
 

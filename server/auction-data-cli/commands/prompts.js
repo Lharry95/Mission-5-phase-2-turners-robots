@@ -30,6 +30,11 @@ const questionsForItems = [
   },
   {
     type: "input",
+    name: "price",
+    message: "price:",
+  },
+  {
+    type: "input",
     name: "condition",
     message: "condition:",
   },
