@@ -1,40 +1,72 @@
 import React from "react";
-import ComparisonColumnData from "./ComparisonColumnData";
+import { useState } from "react";
+import styles from "./ColumnDisplay.module.css";
 
-function ColumnDisplay() {
-  const columns = [
-    "Name",
-    "Image",
-    "Price",
-    "Condition",
-    "Dimensions",
-    "Shipping & pick-up",
-    "Payment Options",
-  ];
+function ColumnDisplay({ data }) {
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  function handleAddToCompare(item) {
+    const alreadySelected = selectedItems.find(
+      (selectedItem) => selectedItem._id === item._id
+    );
+
+    if (!alreadySelected) {
+      setSelectedItems([...selectedItems, item]);
+    }
+  }
+
+  function handleRemoveItem(id) {
+    const updatedItems = selectedItems.filter((item) => item._id !== id);
+    setSelectedItems(updatedItems);
+  }
+
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            {columns.map((header, index) => {
-              <th key={index}>{header}</th>;
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((rowItem) => (
-            <tr key={rowItem.id}>
-              <td>{rowItem.name}</td>
-              <td>{rowItem.image}</td>
-              <td>{rowItem.price}</td>
-              <td>{rowItem.condition}</td>
-              <td>{rowItem.dimensions}</td>
-              <td>{rowItem.shippingAndPickUp}</td>
-              <td>{rowItem.paymentOptions}</td>
-            </tr>
+    <div className={styles.itemList}>
+      {data.map((item) => (
+        <div key={item._id} className={styles.itemBox}>
+          <button
+            className={styles.btn}
+            onClick={() => handleAddToCompare(item)}
+          >
+            Add product
+          </button>
+        </div>
+      ))}
+
+      {selectedItems.length === 0 ? (
+        <p>No Items selected yet</p>
+      ) : (
+        <div className={styles.comparisonWrapper}>
+          {selectedItems.map((item) => (
+            <div key={item._id} className={styles.comparisonCard}>
+              <p>{item.title}</p>
+              <img src={item.image} alt={item.title} width="120" />
+              <p>
+                <strong>Buy Now</strong> {item.price}
+              </p>
+              <p>
+                <strong>Condition</strong> {item.condition}
+              </p>
+              <p>
+                <strong>Dimensions</strong> {item.dimensions}
+              </p>
+              <p>
+                <strong>Shipping & pick-up</strong> {item.shipping_and_pickup}
+              </p>
+              <p>
+                <strong>Payment Options</strong> {item.payment_options}
+              </p>
+
+              <button
+                className={styles.removeBtn}
+                onClick={() => handleRemoveItem(item._id)}
+              >
+                X
+              </button>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </div>
+      )}
     </div>
   );
 }

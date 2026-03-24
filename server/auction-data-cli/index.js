@@ -30,6 +30,7 @@ const addAuction = async (auction) => {
   }
 };
 
+// add specific item
 const addItem = async (item) => {
   try {
     await Item.create(item).then((item) => {
@@ -37,6 +38,20 @@ const addItem = async (item) => {
     });
   } catch (error) {
     console.error("Sorry! Couldn't add your item", error);
+  } finally {
+    mongoose.connection.close();
+  }
+};
+
+// list all items
+const listItems = async () => {
+  try {
+    await Item.find().then((items) => {
+      console.log(items);
+      console.log(`${items.length} Auctions`);
+    });
+  } catch (error) {
+    console.error("Couldn't find the Auction List", error);
   } finally {
     mongoose.connection.close();
   }
@@ -94,6 +109,17 @@ const deleteAll = async () => {
     console.error("Auctions weren't removed, something went wrong", error);
   }
 };
+// delete all the items
+const deleteAllItems = async () => {
+  try {
+    Item.deleteMany().then((items) => {
+      console.log("All items successfully removed from Mongo!");
+      mongoose.connection.close();
+    });
+  } catch (error) {
+    console.error("Items weren't removed, something went wrong", error);
+  }
+};
 
 // list all the auctions in the list
 const listAuctions = async () => {
@@ -131,4 +157,6 @@ module.exports = {
   seedAuctions,
   deleteAll,
   addItem,
+  listItems,
+  deleteAllItems,
 };
