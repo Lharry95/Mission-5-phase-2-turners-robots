@@ -40,7 +40,11 @@ function ColumnDisplay({ data }) {
           {selectedItems.map((item) => (
             <div key={item._id} className={styles.comparisonCard}>
               <p>{item.title}</p>
-              <img src={item.image} alt={item.title} width="120" />
+              <img
+                src={`http://localhost:3000${item.image}`}
+                alt={item.title}
+                width="120"
+              />
               <p>
                 <strong>Buy Now</strong> {item.price}
               </p>

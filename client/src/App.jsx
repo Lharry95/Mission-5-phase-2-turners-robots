@@ -4,13 +4,16 @@ import ComparisonTable from "./pages/ComparisonTable/ComparisonTable.jsx";
 import ProductListing from "./pages/ProductListing/ProductListing.jsx";
 import SearchResults from "./pages/SearchResults/SearchResults.jsx";
 import "./App.css";
+import ComparisonHomePage from "./pages/ComparisonTable/ComparisonHomePage.jsx";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/comparisontable" element={<ComparisonTable />} />
+        <Route path="/comparison" element={<ComparisonHomePage />} />
+        <Route path="/comparison/table" element={<ComparisonTable />} />
+
         <Route path="/productlisting" element={<ProductListing />} />
         <Route path="/searchresults" element={<SearchResults />} />
       </Routes>
