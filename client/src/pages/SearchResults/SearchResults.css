@@ -1,7 +1,6 @@
 .searchResultsPage
 {
     margin-top: 200px;
-    padding: 16px 24px 0 24px;
     font-family: "Inter", sans-serif;
 }
 
@@ -21,10 +20,25 @@
 
 .searchResultsMain
 {
-    
+    background-color: rgb(237, 237, 237);
+    height: 75vh;
+    width: 100%;
 }
 
-.categories-filters
+.filters
 {
-   
+   display: flex;
+   flex-direction: row;
+   gap: 2.5vw;
+   margin-bottom: 5vh;
+}
+
+.labels
+{
+    padding: 10px 25px 10px 25px;
+    background-color: rgb(253, 254, 255);
+    border: 1px solid rgb(0, 122, 205);
+    border-radius: 25px;
+    font-weight: bold;
+    color: rgb(0, 122, 205);
 }

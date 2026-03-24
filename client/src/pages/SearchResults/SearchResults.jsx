@@ -15,11 +15,18 @@ function SearchResults()
       <p className="category">Home & Living</p>
     </div>
     
-    <div className="categories-filters">
-      Categories
+    <div className="filters">
+      <div className="labels">Refine</div>
+      <div className="labels">Category</div>
+      <div className="labels">All Locations</div>
+      <div className="labels">New & Used</div>
+      <div className="labels">Shipping: All</div>
     </div>
     <div className="searchResultsMain">
-      Search Results
+      <div className="searchResultsHeader">
+        <div className="resultsShown">Showing 516 results for 'wooden desk'</div>
+        <div className="sorting">Sort</div>
+      </div>
     </div>
     <Footer/>
   </div>
