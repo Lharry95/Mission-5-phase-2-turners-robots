@@ -1,18 +1,19 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const mongoose = require("mongoose");
-const { Item } = require("./auction-data-cli/models/auctionData");
-const connectingDb = require("./auction-data-cli/db/databaseConnection");
+const connectDB = require("./config/db");
+const listingRoutes = require("./routes/listingRoutes");
+const Item = require("./models/itemModel");
 
 dotenv.config();
+
 const app = express();
+
 app.use(cors());
 app.use(express.json());
-connectingDb();
 
 app.get("/", (req, res) => {
-  res.send("Serving is running..");
+  res.send("Server is running.");
 });
 
 app.get("/comparisontable", async (req, res) => {
@@ -27,21 +28,21 @@ app.get("/comparisontable", async (req, res) => {
   }
 });
 
-app.get("/comparisontable/compare", async (req, res) => {
-  try {
-    const ids = req.query.items.split(",");
-    const products = await Product.find({ _id: { $in: ids } });
-    res.json(products);
-  } catch (error) {
-    res.status(500).json({
-      message: "Error! Couldn't retrieve items",
-      error: error.message,
-    });
-  }
-});
+app.use("/api/listings", listingRoutes);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+async function startServer() {
+  try {
+    await connectDB();
+
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Failed to start server:", error.message);
+    process.exit(1);
+  }
+}
+
+startServer();
