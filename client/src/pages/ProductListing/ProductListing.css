@@ -1,0 +1,52 @@
+.product-listing-page {
+  padding: 2rem;
+}
+
+.listing-card {
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1rem;
+  background: #fff;
+}
+
+.listing-image {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.bid-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.bid-form input,
+.bid-form button {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.bid-form button {
+  cursor: pointer;
+}
+
+.bid-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.success-message {
+  margin-top: 1rem;
+  color: green;
+}
+
+.error-message {
+  margin-top: 1rem;
+  color: red;
+}
