@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import styles from "./ComparisonColumnData.module.css";
 
+
 function ComparisonColumnData() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);

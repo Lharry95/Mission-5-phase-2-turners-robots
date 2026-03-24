@@ -1,9 +1,9 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const { Item } = require("./auction-data-cli/models/auctionData");
 const connectDB = require("./config/db");
 const listingRoutes = require("./routes/listingRoutes");
+const Item = require("./models/itemModel");
 
 dotenv.config();
 
