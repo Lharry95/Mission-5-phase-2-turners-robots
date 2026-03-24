@@ -27,6 +27,13 @@ function SearchResults()
         <div className="resultsShown">Showing 516 results for 'wooden desk'</div>
         <div className="sorting">Sort</div>
       </div>
+      <div className="results">
+        <div className="auctionItem">Item 1</div>
+        <div className="auctionItem">Item 2</div>
+        <div className="auctionItem">Item 3</div>
+        <div className="auctionItem">Item 4</div>
+        <div className="auctionItem">Item 5</div>
+      </div>
     </div>
     <Footer/>
   </div>

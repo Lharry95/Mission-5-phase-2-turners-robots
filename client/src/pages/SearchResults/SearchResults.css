@@ -18,13 +18,6 @@
     margin-top: 10px;
 }
 
-.searchResultsMain
-{
-    background-color: rgb(237, 237, 237);
-    height: 75vh;
-    width: 100%;
-}
-
 .filters
 {
    display: flex;
@@ -41,4 +34,38 @@
     border-radius: 25px;
     font-weight: bold;
     color: rgb(0, 122, 205);
+}
+
+.searchResultsMain
+{
+    background-color: rgb(237, 237, 237);
+    height: 75vh;
+    width: 100%;
+}
+
+.searchResultsHeader
+{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding: 20px;
+}
+
+.resultsShown
+{
+    font-weight: bold;
+    color: rgb(68, 65, 61)
+}
+
+.results
+{
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+}
+
+.auctionItem
+{
+
 }
