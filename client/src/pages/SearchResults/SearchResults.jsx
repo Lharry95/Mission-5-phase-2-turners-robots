@@ -28,30 +28,52 @@ function SearchResults()
         <div className="sorting">Sort</div>
       </div>
       <div className="resultsGrid">
+
         <div className="itemCard">
           <div className="itemImage">Image</div>
-          <div className="itemInfo">Item</div>
+          <div className="itemInfo">
+            <div className="itemTitle">Title</div>
+            <div className="itemDescription">Description</div>
+            <div className="itemPrice">Price</div>
+          </div>
         </div>
 
         <div className="itemCard">
           <div className="itemImage">Image</div>
-          <div className="itemInfo">Item</div>
+          <div className="itemInfo">
+            <div className="itemTitle">Title</div>
+            <div className="itemDescription">Description</div>
+            <div className="itemPrice">Price</div>
+          </div>
         </div>
 
         <div className="itemCard">
           <div className="itemImage">Image</div>
-          <div className="itemInfo">Item</div>
+          <div className="itemInfo">
+            <div className="itemTitle">Title</div>
+            <div className="itemDescription">Description</div>
+            <div className="itemPrice">Price</div>
+          </div>
         </div>
 
         <div className="itemCard">
           <div className="itemImage">Image</div>
-          <div className="itemInfo">Item</div>
+          <div className="itemInfo">
+            <div className="itemTitle">Title</div>
+            <div className="itemDescription">Description</div>
+            <div className="itemPrice">Price</div>
+          </div>
         </div>
 
         <div className="itemCard">
           <div className="itemImage">Image</div>
-          <div className="itemInfo">Item</div>
+          <div className="itemInfo">
+            <div className="itemTitle">Title</div>
+            <div className="itemDescription">Description</div>
+            <div className="itemPrice">Price</div>
+          </div>
         </div>
+
       </div>
     </div>
     <Footer/>
