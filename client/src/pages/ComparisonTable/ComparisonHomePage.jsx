@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import styles from "./ComparisonColumnData.module.css";
-import ColumnDisplay from "./ColumnDisplay";
+import React from "react";
+import { Outlet } from "react-router-dom";
+import styles from "./ComparisonHomePage.module";
 
-function ComparisonColumnData() {
+function ComparisonHomePage() {
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/comparisontable/compare")
+    fetch("http://localhost:3000/comparisontable")
       .then((response) => response.json())
       .then((items) => {
         console.log("Fetched data:", items);
@@ -18,12 +18,11 @@ function ComparisonColumnData() {
         setError("Could not load data");
       });
   }, []);
-
   return (
-    <div className={styles.columnContainer}>
-      <ColumnDisplay data={data} />
+    <div className={styles.content}>
+      <Outlet />
     </div>
   );
 }
 
-export default ComparisonColumnData;
+export default ComparisonHomePage;

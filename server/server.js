@@ -28,6 +28,18 @@ app.get("/comparisontable", async (req, res) => {
   }
 });
 
+app.get("/comparisontable/compare", async (req, res) => {
+  try {
+    const items = await Item.find();
+    res.json(items);
+  } catch (error) {
+    res.status(500).json({
+      message: "Error! Couldn't retrieve items",
+      error: error.message,
+    });
+  }
+});
+
 app.use("/api/listings", listingRoutes);
 
 const PORT = process.env.PORT || 3000;
