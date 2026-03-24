@@ -1,0 +1,140 @@
+.footer {
+  font-family: "Inter", sans-serif;
+  margin-top: 48px;
+}
+
+/* Upgrade Notice */
+.footer-notice {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 24px;
+  border-top: 1px solid #d9d9d9;
+  font-size: 14px;
+  color: #44413c;
+}
+
+.footer-notice a {
+  color: #0037cd;
+  text-decoration: none;
+}
+
+.footer-notice a:hover {
+  text-decoration: underline;
+}
+
+/* Main Footer */
+.footer-main {
+  background-color: #f2f2f2;
+  padding: 32px 24px;
+}
+
+/* Footer Logo */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.footer-logo .logo-trade {
+  color: #4b61d1;
+}
+
+.footer-logo .logo-me {
+  color: #f0a92e;
+}
+
+.footer-logo .logo-kiwi {
+  font-size: 20px;
+  margin-left: 4px;
+}
+
+/* Links Grid */
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-heading {
+  font-size: 14px;
+  font-weight: 700;
+  color: #44413c;
+  margin-bottom: 4px;
+}
+
+.footer-link {
+  font-size: 13px;
+  color: #7f7c77;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #0037cd;
+  text-decoration: underline;
+}
+
+/* Partner Links */
+.footer-partners {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 16px 24px;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  background-color: #ffffff;
+}
+
+.partner-link {
+  font-size: 13px;
+  color: #44413c;
+  text-decoration: none;
+}
+
+.partner-link:hover {
+  color: #0037cd;
+  text-decoration: underline;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  font-size: 13px;
+  color: #7f7c77;
+}
+
+.bottom-links {
+  display: flex;
+  gap: 16px;
+}
+
+.bottom-link {
+  font-size: 13px;
+  color: #7f7c77;
+  text-decoration: none;
+}
+
+.bottom-link:hover {
+  color: #0037cd;
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  font-size: 18px;
+  cursor: pointer;
+}

@@ -1,0 +1,136 @@
+.home {
+  font-family: "Inter", sans-serif;
+}
+
+.home-main {
+  margin-top: 200px;
+  padding: 16px 24px 0 24px;
+}
+
+/* Category Tabs */
+.category-tabs {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  justify-content: center;
+}
+
+.category-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #44413c;
+  font-weight: 500;
+  transition: all 0.2s;
+  background-color: #ffffff;
+  border: 1px solid #f2f2f2;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.category-tab:hover {
+  border: 1px solid #0037cd;
+  color: #0037cd;
+}
+
+.category-tab.active {
+  border: 1px solid #0037cd;
+  color: #0037cd;
+}
+
+.category-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.category-name {
+  white-space: nowrap;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 24px 0;
+}
+
+.product-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #f2f2f2;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 12px;
+}
+
+.product-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #44413c;
+  margin-bottom: 4px;
+}
+
+.product-location {
+  font-size: 12px;
+  color: #a5a5a5;
+  margin-bottom: 4px;
+}
+
+.product-closing {
+  font-size: 12px;
+  color: #a5a5a5;
+  margin-bottom: 8px;
+}
+
+.product-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0037cd;
+}
+
+/* Active Category Tab */
+.category-tab.active {
+  border: 1px solid #0037cd;
+  color: #0037cd;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  padding: 16px 0;
+}
+
+.filter-select {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid #0037cd;
+  color: #0037cd;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.filter-select:focus {
+  border-color: #4b61d1;
+}
