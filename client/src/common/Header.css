@@ -167,3 +167,7 @@
 .nav-item span {
   margin-top: 2px;
 }
+
+.link {
+  text-decoration: none;
+}

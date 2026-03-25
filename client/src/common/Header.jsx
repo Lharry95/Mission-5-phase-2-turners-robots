@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
@@ -22,9 +22,11 @@ function Header() {
           <img src="/src/common/logo.png" alt="Trade Me" className="logo-img" />
         </div>
         <nav className="header-nav">
-          <div className="nav-item">
-            ⚖️ <span>Comparison</span>
-          </div>
+          <Link to="/comparison" className="link">
+            <div className="nav-item">
+              ⚖️ <span>Comparison</span>
+            </div>
+          </Link>
           <div className="nav-item">
             ☰ <span>Categories</span>
           </div>

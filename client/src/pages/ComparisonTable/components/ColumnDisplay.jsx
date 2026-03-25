@@ -5,12 +5,23 @@ import addProductBtn from "../../../assets/add-product-icon.png";
 
 function ColumnDisplay({ data }) {
   const navigate = useNavigate();
-  const [comparisonSlots] = useState([null, null, null, null]);
+  const [comparisonSlots, setComparisonSlots] = useState([
+    null,
+    null,
+    null,
+    null,
+  ]);
 
   function handleGoToSearch(slotIndex) {
     navigate("/searchresults", {
       state: { slotIndex: slotIndex },
     });
+  }
+
+  function handleRemoveItem(slotIndex) {
+    const updatedSlots = [...comparisonSlots];
+
+    setComparisonSlots(updatedSlots);
   }
 
   return (
@@ -27,7 +38,15 @@ function ColumnDisplay({ data }) {
               Add Product
             </button>
           ) : (
-            <p>Product will show here</p>
+            <div className={styles.removeBtnContainer}>
+              <button
+                className={styles.removeBtn}
+                onClick={() => handleRemoveItem(index)}
+              >
+                {" "}
+                X{" "}
+              </button>
+            </div>
           )}
         </div>
       ))}

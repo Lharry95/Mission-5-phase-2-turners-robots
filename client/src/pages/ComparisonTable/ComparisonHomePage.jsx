@@ -12,9 +12,11 @@ function ComparisonHomePage() {
     <div>
       <Header />
       <div className={styles.homePageContainer}>
-        <h1 className={styles.header1}>COMPARISON TABLE</h1>
-        <p>1 Category</p>
-
+        <div className={styles.headerTitles}>
+          <p className={styles.paths}>Home / Marketplace / Comparison Table</p>
+          <h1 className={styles.header1}>COMPARISON TABLE</h1>
+          <p className={styles.para1}>1 Category</p>
+        </div>
         <div className={styles.content}>
           <Link to="/comparison/table" className={styles.link}>
             <div className={styles.btnContainer}>
