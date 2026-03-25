@@ -1,14 +1,48 @@
 import { Link } from "react-router-dom";
 import styles from "./ComparisonHomePage.module.css";
+import Header from "../../common/Header";
+import Footer from "../../common/Footer";
+import woodenDesk from "../../assets/wooden-desk.png";
+import addProductBtn from "../../assets/add-product-icon.png";
+import rimuDesk from "../../assets/solid-rimu-desk.png";
+import teakDesk from "../../assets/solid-teak-study-desk.png";
 
 function ComparisonHomePage() {
   return (
-    <div className={styles.homePageContainer}>
-      <div className={styles.content}>COMPARISON TABLE</div>
-      <p>1 Category</p>
-      <Link to="/comparison/table">
-        <button className={styles.goToBtn}>View Comparison Table</button>
-      </Link>
+    <div>
+      <Header />
+      <div className={styles.homePageContainer}>
+        <h1 className={styles.header1}>COMPARISON TABLE</h1>
+        <p>1 Category</p>
+
+        <div className={styles.content}>
+          <Link to="/comparison/table" className={styles.link}>
+            <div className={styles.btnContainer}>
+              <h2 className={styles.header2}>WOODEN DESKS</h2>
+              <div className={styles.imgContainer}>
+                <img
+                  className={styles.img}
+                  src={woodenDesk}
+                  alt="wooden desk"
+                />
+                <br />
+                <img className={styles.img} src={rimuDesk} alt="rimu desk" />
+                <br />
+                <img className={styles.img} src={teakDesk} alt="teak desk" />
+                <br />
+              </div>
+              <button className={styles.goToBtn}>View Comparison Table</button>
+            </div>
+          </Link>
+
+          <button className={styles.createCategoryBtn}>
+            <img src={addProductBtn} alt="add product" />
+            <br />
+            Create new Category
+          </button>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 }

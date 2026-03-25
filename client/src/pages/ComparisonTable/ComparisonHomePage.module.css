@@ -1,0 +1,78 @@
+.homePageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20rem;
+  padding-bottom: 5rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  background-color: #f2f2f2;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 5%;
+  min-width: 40%;
+  padding: 2rem;
+  text-align: left;
+}
+
+.btnContainer:hover {
+  border: 5px solid #1a90e0;
+}
+
+.goToBtn {
+  width: 200px;
+  height: 60px;
+  background-color: #4854d3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.header2 {
+  color: #f9af2c;
+  font-size: 50px;
+}
+.goToBtn:hover {
+  background-color: #007acd;
+}
+
+.img {
+  width: 20%;
+  height: auto;
+}
+
+.imgContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.createCategoryBtn {
+  background-color: white;
+  min-width: 40%;
+  border: none;
+  border-radius: 5%;
+  padding: 2rem;
+}
+
+.createCategoryBtn:hover {
+  border: 5px solid #1a90e0;
+}

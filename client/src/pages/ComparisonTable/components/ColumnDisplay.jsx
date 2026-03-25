@@ -1,76 +1,36 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "./ColumnDisplay.module.css";
+import addProductBtn from "../../../assets/add-product-icon.png";
 
 function ColumnDisplay({ data }) {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const navigate = useNavigate();
+  const [comparisonSlots] = useState([null, null, null, null]);
 
-  function handleAddToCompare(item) {
-    const alreadySelected = selectedItems.find(
-      (selectedItem) => selectedItem._id === item._id
-    );
-
-    if (!alreadySelected) {
-      setSelectedItems([...selectedItems, item]);
-    }
-  }
-
-  function handleRemoveItem(id) {
-    const updatedItems = selectedItems.filter((item) => item._id !== id);
-    setSelectedItems(updatedItems);
+  function handleGoToSearch(slotIndex) {
+    navigate("/searchresults", {
+      state: { slotIndex: slotIndex },
+    });
   }
 
   return (
-    <div className={styles.itemList}>
-      {data.map((item) => (
-        <div key={item._id} className={styles.itemBox}>
-          <button
-            className={styles.btn}
-            onClick={() => handleAddToCompare(item)}
-          >
-            Add product
-          </button>
+    <div className={styles.comparisonContainer}>
+      {comparisonSlots.map((slot, index) => (
+        <div key={index} className={styles.comparisonCard}>
+          {slot === null ? (
+            <button
+              className={styles.addProductBtn}
+              onClick={() => handleGoToSearch(index)}
+            >
+              {" "}
+              {<img src={addProductBtn} alt="add product" />} <br />
+              Add Product
+            </button>
+          ) : (
+            <p>Product will show here</p>
+          )}
         </div>
       ))}
-
-      {selectedItems.length === 0 ? (
-        <p>No Items selected yet</p>
-      ) : (
-        <div className={styles.comparisonWrapper}>
-          {selectedItems.map((item) => (
-            <div key={item._id} className={styles.comparisonCard}>
-              <p>{item.title}</p>
-              <img
-                src={`http://localhost:3000${item.image}`}
-                alt={item.title}
-                width="120"
-              />
-              <p>
-                <strong>Buy Now</strong> {item.price}
-              </p>
-              <p>
-                <strong>Condition</strong> {item.condition}
-              </p>
-              <p>
-                <strong>Dimensions</strong> {item.dimensions}
-              </p>
-              <p>
-                <strong>Shipping & pick-up</strong> {item.shipping_and_pickup}
-              </p>
-              <p>
-                <strong>Payment Options</strong> {item.payment_options}
-              </p>
-
-              <button
-                className={styles.removeBtn}
-                onClick={() => handleRemoveItem(item._id)}
-              >
-                X
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
