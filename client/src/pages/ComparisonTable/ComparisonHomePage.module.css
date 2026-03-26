@@ -10,6 +10,7 @@
   font-family: "Oswald", sans-serif;
 }
 
+/* page content */
 .content {
   display: flex;
   flex-direction: row;
@@ -19,6 +20,7 @@
   padding: 20px 0;
 }
 
+/* link to comparison table */
 .link {
   text-decoration: none;
   display: flex;
@@ -26,6 +28,7 @@
   max-width: 500px;
 }
 
+/* buttons */
 .btnContainer,
 .createCategoryBtn {
   width: 100%;
@@ -38,7 +41,6 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  transition: all 0.2s ease;
 }
 
 .btnContainer {
@@ -58,7 +60,6 @@
 .btnContainer:hover,
 .createCategoryBtn:hover {
   outline: 5px solid #1a90e0;
-  transform: translateY(-4px);
 }
 
 .viewComparisonBtn {
@@ -105,6 +106,7 @@
   flex-wrap: wrap;
 }
 
+/*  */
 .paths {
   padding: 15px 0;
 }
@@ -113,11 +115,12 @@
   padding: 15px 0;
 }
 
+/* table */
 @media only screen and (max-width: 1024px) {
   .homePageContainer {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    padding-top: 1.5rem;
+    padding-top: 15rem;
   }
 
   .content {
@@ -138,11 +141,13 @@
   }
 }
 
+/* mobile */
 @media only screen and (max-width: 768px) {
   .homePageContainer {
     padding-left: 1rem;
     padding-right: 1rem;
-    padding-top: 1rem;
+    padding-top: 15rem;
+    max-width: 300px;
   }
 
   .header1,
@@ -152,7 +157,7 @@
 
   .btnContainer,
   .createCategoryBtn {
-    padding: 1.5rem;
+    padding: 3rem 1.5rem;
   }
 
   .img {

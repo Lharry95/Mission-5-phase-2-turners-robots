@@ -5,6 +5,7 @@ import addProductBtn from "../../../assets/add-product-icon.png";
 
 function ColumnDisplay({ data }) {
   const navigate = useNavigate();
+  // for columns - starts empty before items placed inside
   const [comparisonSlots, setComparisonSlots] = useState([
     null,
     null,
@@ -12,12 +13,14 @@ function ColumnDisplay({ data }) {
     null,
   ]);
 
+  // when add product button is clicked - sends to search results page
   function handleGoToSearch(slotIndex) {
     navigate("/searchresults", {
       state: { slotIndex: slotIndex },
     });
   }
 
+  // when remove button is clicked - column/item is removed and state is updated
   function handleRemoveItem(slotIndex) {
     const updatedSlots = [...comparisonSlots];
 
@@ -35,6 +38,7 @@ function ColumnDisplay({ data }) {
         </h1>
       </div>
       <div className={styles.comparisonContainer}>
+        {/* maps over columns, if empty include the add product button else include item and remove button  */}
         {comparisonSlots.map((slot, index) => (
           <div key={index} className={styles.comparisonCard}>
             {slot === null ? (

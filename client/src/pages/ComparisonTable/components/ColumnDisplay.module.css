@@ -16,6 +16,7 @@
   letter-spacing: 1px;
 }
 
+/* wooden desk part in the header */
 .desks {
   color: #f9af2c;
 }
@@ -28,6 +29,7 @@
   background-color: #f2f2f2;
 }
 
+/* individual columns */
 .comparisonCard {
   min-height: 600px;
   padding: 2rem;
@@ -45,7 +47,6 @@
 
 .comparisonCard:hover {
   outline: 5px solid #1a90e0;
-  transform: translateY(-4px);
 }
 
 .addProductBtn {
@@ -84,6 +85,7 @@
   font-weight: bold;
 }
 
+/* tablet view */
 @media only screen and (max-width: 1024px) {
   .headerTitles {
     padding: 1.5rem 1.5rem 1rem 1.5rem;
@@ -99,6 +101,7 @@
   }
 }
 
+/* mobile view */
 @media only screen and (max-width: 768px) {
   .headerTitles {
     padding: 1rem 1rem 0.5rem 1rem;

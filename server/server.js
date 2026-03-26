@@ -4,7 +4,6 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 const listingRoutes = require("./routes/listingRoutes");
 const Item = require("./models/itemModel");
-const multer = require("multer");
 
 dotenv.config();
 
