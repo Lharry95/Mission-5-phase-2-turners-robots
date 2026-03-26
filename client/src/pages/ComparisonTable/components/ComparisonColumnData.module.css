@@ -3,33 +3,20 @@
   font-family: Arial, sans-serif;
   overflow-x: auto;
   gap: 2rem;
-  justify-content: space-between;
-  justify-content: center;
   display: flex;
   flex-direction: column;
-  vertical-align: middle;
+  justify-content: center;
   background-color: #f2f2f2;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .columnContainer {
-    display: flex;
     flex-direction: column;
-    vertical-align: middle;
-    grid-template-columns: 1fr;
-  }
-  .comparisonTable {
-    grid-template-columns: 1fr;
   }
 }
+
 @media only screen and (max-width: 768px) {
   .columnContainer {
-    display: flex;
     flex-direction: column;
-    vertical-align: middle;
-    grid-template-columns: 1fr;
-  }
-  .comparisonTable {
-    grid-template-columns: 1fr;
   }
 }

@@ -27,13 +27,14 @@ function ComparisonHomePage() {
                   src={woodenDesk}
                   alt="wooden desk"
                 />
-                <br />
+
                 <img className={styles.img} src={rimuDesk} alt="rimu desk" />
-                <br />
+
                 <img className={styles.img} src={teakDesk} alt="teak desk" />
-                <br />
               </div>
-              <button className={styles.goToBtn}>View Comparison Table</button>
+              <button className={styles.viewComparisonBtn}>
+                View Comparison Table
+              </button>
             </div>
           </Link>
 
