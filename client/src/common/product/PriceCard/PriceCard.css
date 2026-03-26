@@ -1,0 +1,40 @@
+.price-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.price-card__title {
+  font-size: 2rem;
+  margin: 0 0 16px;
+  color: #222;
+}
+
+.price-card__section {
+  margin-bottom: 20px;
+}
+
+.price-card__label {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0 0 6px;
+}
+
+.price-card__buy-now {
+  font-size: 2rem;
+  margin: 0;
+  color: #111;
+}
+
+.price-card__starting {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #111;
+}
+
+.price-card__minimum {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #666;
+}
