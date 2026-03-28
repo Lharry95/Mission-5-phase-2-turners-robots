@@ -65,14 +65,14 @@
     gap: 32px;
 }
 
-.itemImage
+.listingImage
 {
     width: 100%;
     height: 25vh;
     background-color: lightskyblue;
 }
 
-.itemInfo
+.listingInfo
 {
     padding: 10px;
     background-color: white;
@@ -82,7 +82,7 @@
     flex-direction: column;
 }
 
-.itemTitle
+.listingTitle
 {
     justify-content: flex-start;
     margin-bottom: 1vh;
@@ -90,12 +90,12 @@
     font-size: 25px;
 }
 
-.itemDescription
+.listingDescription
 {
     margin-bottom: 2vh;
 }
 
-.itemPrice
+.listingPrice
 {
     text-align:right;
 }

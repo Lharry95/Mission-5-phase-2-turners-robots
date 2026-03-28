@@ -69,9 +69,15 @@ app.get("/search", async (req,res) =>
       return res.status(400).json({ message: "Please enter a search" })
     }
 
-    const listings = await Item.find({
-      title: { $regex: query, $options: "i" }
-    })
+    const keyWords = query.split(" ")
+
+    const listings = await Item.db.collection("auction-listings").find({
+      $or: keyWords.map(query =>
+      ({
+        title: { $regex: query, $options: "i"}
+      })
+      )
+    }).toArray()
 
     res.json(listings)
   }

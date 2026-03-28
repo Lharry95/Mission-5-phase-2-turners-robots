@@ -1,11 +1,40 @@
 import "./SearchResults.css"
 import { useEffect, useState } from "react"
-import { useSearchParams } from "react"
+import { useSearchParams } from "react-router-dom"
 import Header from "../../common/Header"
 import Footer from "../../common/Footer"
 
 function SearchResults()
 {
+  const [listings, setListings] = useState([])
+
+  const [searchParams] = useSearchParams()
+  const query = searchParams.get("q")
+
+  useEffect(() =>
+  {
+    if (!query)
+    {
+      return alert("Search query is empty")
+    }
+    
+    fetch(`http://localhost:3000/search?query=${query}`)
+      .then((res) => res.json())
+      .then((data) => {setListings(data)})
+      .catch((err) => console.error(err))
+  }, [query])
+
+  const image = import.meta.glob('./assets/*.png', { eager: true, query: '?url'})
+
+  function fetchImagePath(filename)
+  {
+    const path = `./assets/${filename}`
+
+    return image[path].default
+  }
+
+  listings.map((listing) => console.log(fetchImagePath(listing.image)))
+
   return (
   <div className="searchResultsPage">
     <Header/>
@@ -13,7 +42,7 @@ function SearchResults()
       <p className="paths">Home / Marketplace / Home & Living</p>
       <p className="category">Home & Living</p>
     </div>
-    
+
     <div className="filters">
       <div className="labels">Refine</div>
       <div className="labels">Category</div>
@@ -27,14 +56,14 @@ function SearchResults()
         <div className="sorting">Sort</div>
       </div>
       <div className="resultsGrid">
-        {auctionItems.map((item) =>
+        {listings.map((listing) =>
         (
-          <div key={item.id} className="itemCard">
-            <img src={item.image} alt={item.title} className="itemImage"/>
-            <div className="itemInfo">
-              <div className="itemTitle">{item.title}</div>
-              <div className="itemDescription">{item.description}</div>
-              <div className="itemPrice">{item.price}</div>
+          <div key={listing._id} className="listingCard">
+            <img src={fetchImagePath(listing.image)} alt={listing.title} className="listingImage"/>
+            <div className="listingInfo">
+              <div className="listingTitle">{listing.title}</div>
+              <div className="listingDescription">{listing.description}</div>
+              <div className="listingrice">{listing.price}</div>
             </div>
           </div>
         ))}
