@@ -55,6 +55,8 @@
   text-align: center;
   gap: 10px;
   border: none;
+  color: #4854d3;
+  font-size: large;
 }
 
 .btnContainer:hover,
@@ -106,11 +108,13 @@
   flex-wrap: wrap;
 }
 
-/*  */
 .paths {
   padding: 15px 0;
 }
 
+.paths span {
+  color: #4854d3;
+}
 .para1 {
   padding: 15px 0;
 }

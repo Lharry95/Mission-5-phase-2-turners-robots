@@ -9,6 +9,9 @@
   padding-bottom: 30px;
 }
 
+.comparisonTablePaths span {
+  color: #4854d3;
+}
 .comparisonTableHeader1 {
   font-size: 28px;
   color: #4854d3;
@@ -68,6 +71,10 @@
   height: 50px;
 }
 
+.btnPara {
+  color: #44413c;
+  font-weight: 300;
+}
 .removeBtnContainer {
   display: flex;
   justify-content: flex-end;
@@ -108,7 +115,7 @@
   }
 
   .comparisonContainer {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
     padding: 1rem;
     gap: 20px;
   }

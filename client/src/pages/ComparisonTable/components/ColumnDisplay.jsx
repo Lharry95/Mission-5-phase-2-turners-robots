@@ -23,15 +23,16 @@ function ColumnDisplay({ data }) {
   // when remove button is clicked - column/item is removed and state is updated
   function handleRemoveItem(slotIndex) {
     const updatedSlots = [...comparisonSlots];
-
+    updatedSlots[slotIndex] = null;
     setComparisonSlots(updatedSlots);
   }
 
+  const filledColumns = comparisonSlots.filter((slot) => slot !== null).length;
   return (
     <div>
       <div className={styles.headerTitles}>
         <p className={styles.comparisonTablePaths}>
-          Home / Marketplace / Comparison Table / Wooden Desks
+          <span> Home / Marketplace / Comparison Table</span> / Wooden Desks
         </p>
         <h1 className={styles.comparisonTableHeader1}>
           COMPARISON TABLE: <span className={styles.desks}>WOOODEN DESKS</span>
@@ -49,6 +50,7 @@ function ColumnDisplay({ data }) {
                 {" "}
                 {<img src={addProductBtn} alt="add product" />} <br />
                 Add Product
+                <p className={styles.btnPara}>{`${filledColumns}/4 added`}</p>
               </button>
             ) : (
               <div className={styles.removeBtnContainer}>
