@@ -1,7 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import Header from "../../common/Header";
 import Footer from "../../common/Footer";
 import "./Home.css";
+import image23 from "../../assets/images/image23.png";
+import image24 from "../../assets/images/image24.png";
+import image26 from "../../assets/images/image26.png";
+import image27 from "../../assets/images/image27.png";
+import image28 from "../../assets/images/image28.png";
+import image29 from "../../assets/images/image29.png";
+import image30 from "../../assets/images/image30.png";
+import image31 from "../../assets/images/image31.png";
 
 const categories = [
   { name: "Marketplace", icon: "/src/pages/Home/marketplace-icon.png" },
@@ -14,51 +23,51 @@ const categories = [
 const products = [
   {
     id: 1,
-    title: "Beautiful Family Home",
-    location: "Auckland, Auckland",
-    closing: "Closes: Mon, 24 Mar",
-    price: "$850,000",
-    image: "https://placehold.co/300x200?text=Property+1",
+    title: "Vintage Wooden Desk",
+    location: "Whangarei, Northland",
+    closing: "Closes: Fri, 13 Mar",
+    price: "$120",
+    image: image23,
   },
   {
     id: 2,
-    title: "Vintage Wooden Desk",
-    location: "Wellington, Wellington",
-    closing: "Closes: Tue, 25 Mar",
-    price: "$120",
-    image: "https://placehold.co/300x200?text=Product+2",
+    title: "Corner Desk with Cabinets",
+    location: "Auckland, Auckland",
+    closing: "Closes: Sat, 14 Mar",
+    price: "$150",
+    image: image24,
   },
   {
     id: 3,
-    title: "2022 Toyota Corolla",
-    location: "Christchurch, Canterbury",
-    closing: "Closes: Wed, 26 Mar",
-    price: "$18,500",
-    image: "https://placehold.co/300x200?text=Motors+3",
+    title: "Oak Desk",
+    location: "Wellington, Wellington",
+    closing: "Closes: Sun, 15 Mar",
+    price: "$220",
+    image: image26,
   },
   {
     id: 4,
-    title: "iPhone 13 Pro 256GB",
-    location: "Hamilton, Waikato",
-    closing: "Closes: Thu, 27 Mar",
-    price: "$650",
-    image: "https://placehold.co/300x200?text=Product+4",
+    title: "Solid Rimu Desk",
+    location: "Christchurch, Canterbury",
+    closing: "Closes: Mon, 16 Mar",
+    price: "$40",
+    image: image27,
   },
   {
     id: 5,
-    title: "Modern Apartment",
-    location: "Tauranga, Bay of Plenty",
-    closing: "Closes: Fri, 28 Mar",
-    price: "$450,000",
-    image: "https://placehold.co/300x200?text=Property+5",
+    title: "Large Desk",
+    location: "Hamilton, Waikato",
+    closing: "Closes: Tue, 17 Mar",
+    price: "$100",
+    image: image28,
   },
   {
     id: 6,
-    title: "Sony PlayStation 5",
-    location: "Dunedin, Otago",
-    closing: "Closes: Sat, 29 Mar",
-    price: "$550",
-    image: "https://placehold.co/300x200?text=Product+6",
+    title: "20th Century Wooden Desk",
+    location: "Tauranga, Bay of Plenty",
+    closing: "Closes: Wed, 18 Mar",
+    price: "$110",
+    image: image29,
   },
   {
     id: 7,
@@ -66,7 +75,7 @@ const products = [
     location: "Nelson, Nelson",
     closing: "Closes: Sun, 30 Mar",
     price: "$400",
-    image: "https://placehold.co/300x200?text=Product+7",
+    image: image30,
   },
   {
     id: 8,
@@ -74,7 +83,7 @@ const products = [
     location: "Napier, Hawke's Bay",
     closing: "Closes: Mon, 31 Mar",
     price: "$800",
-    image: "https://placehold.co/300x200?text=Product+8",
+    image: image31,
   },
 ];
 
@@ -83,6 +92,7 @@ function Home() {
   const [shipping, setShipping] = useState("Shipping: All");
   const [location, setLocation] = useState("All Locations");
   const [sortBy, setSortBy] = useState("Sort: Best Match");
+  const navigate = useNavigate();
 
   return (
     <div className="home">
@@ -142,7 +152,15 @@ function Home() {
         {/* Product Grid */}
         <div className="product-grid">
           {products.map((product) => (
-            <div key={product.id} className="product-card">
+            <div
+              key={product.id}
+              className="product-card"
+              onClick={() => {
+                if (product.id === 1) {
+                  navigate("/productlisting");
+                }
+              }}
+            >
               <img
                 src={product.image}
                 alt={product.title}

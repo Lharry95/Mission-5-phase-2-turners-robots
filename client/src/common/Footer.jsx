@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.css";
+import footerLogo from "../assets/logo/trade_me_logo.svg.png";
 
 const footerLinks = [
   {
@@ -98,7 +99,7 @@ function Footer() {
       <div className="footer-main">
         {/* Logo */}
         <div className="footer-logo">
-          <img src="/src/common/logo.png" alt="Trade Me" className="logo-img" />
+          <img src={footerLogo} alt="Trade Me" className="logo-img" />
         </div>
 
         {/* Links Grid */}
