@@ -1,0 +1,36 @@
+.shipping-card {
+  width: 100%;
+  max-width: 426px;
+  background: #fbf8f7;
+  border: 1px solid #d3d3d3;
+  border-radius: 0 0 9px 9px;
+  padding: 10px 18px 10px;
+  margin: 0 0 22px;
+  box-sizing: border-box;
+}
+
+.shipping-card__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 36px;
+}
+
+.shipping-card__row + .shipping-card__row {
+  margin-top: -10px;
+}
+
+.shipping-card__icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+.shipping-card__text {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #7f7c77;
+}

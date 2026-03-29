@@ -1,0 +1,69 @@
+.protection-card {
+  width: 100%;
+  max-width: 426px;
+  min-height: 200px;
+  box-sizing: border-box;
+  background: rgba(26, 144, 224, 0.07);
+  border: 1px solid #d3d3d3;
+  border-radius: 10px;
+  box-shadow:
+    -32px 91px 39px rgba(212, 212, 212, 0.01),
+    -18px 51px 33px rgba(212, 212, 212, 0.05),
+    -8px 23px 24px rgba(212, 212, 212, 0.09),
+    -2px 6px 13px rgba(212, 212, 212, 0.1);
+  padding: 20px 18px 14px;
+  margin: 22px 0 18px;
+  display: flex;
+  align-items: center;
+}
+
+.protection-card__inner {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  column-gap: 12px;
+  align-items: center;
+}
+
+.protection-card__icon {
+  width: 32px;
+  height: 34px;
+  margin: 0;
+}
+
+.protection-card__content {
+  min-width: 0;
+  max-width: 320px;
+}
+
+.protection-card__title {
+  margin: 0 0 8px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #44413c;
+}
+
+.protection-card__text {
+  margin: 0 0 10px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  color: #44413c;
+}
+
+.protection-card__text strong {
+  font-weight: 700;
+}
+
+.protection-card__link-text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #a5a5a5;
+}
+
+.protection-card__link {
+  color: #3796e8;
+  text-decoration: underline;
+}
