@@ -1,0 +1,84 @@
+.product-meta-wrap {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.product-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 55px;
+  box-sizing: border-box;
+  padding: 0 18px 0 20px;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  background: rgba(174, 109, 143, 0.15);
+  cursor: pointer;
+}
+
+.product-meta:focus-visible {
+  outline: 2px solid #1a90e0;
+  outline-offset: 2px;
+}
+
+.product-meta__left,
+.product-meta__panel-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.product-meta__icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.product-meta__text {
+  color: #44413c;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.product-meta__arrow {
+  color: #d8c6d0;
+  font-size: 24px;
+  line-height: 1;
+  transform: rotate(0deg);
+  transition: transform 0.15s ease;
+}
+
+.product-meta__arrow.is-open {
+  transform: rotate(90deg);
+}
+
+.product-meta__panel {
+  width: 100%;
+  min-height: 145px;
+  box-sizing: border-box;
+  margin-top: 12px;
+  padding: 18px 18px 18px 20px;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  background: linear-gradient(
+    75.89deg,
+    rgba(174, 109, 143, 0.15) 13.89%,
+    rgba(216, 198, 208, 0.15) 65.5%
+  );
+}
+
+.product-meta__panel-header {
+  margin-bottom: 18px;
+}
+
+.product-meta__panel-text {
+  margin: 0;
+  color: #44413c;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+}

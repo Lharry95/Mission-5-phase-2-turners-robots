@@ -1,11 +1,24 @@
-const mongoose = require("mongoose");
+const { Types } = require("mongoose");
 const Listing = require("../models/listingModel");
+
+const getListings = async (req, res) => {
+  try {
+    const listings = await Listing.find().sort({ createdAt: -1 });
+
+    return res.status(200).json(listings);
+  } catch (error) {
+    console.error("Failed to fetch listings:", error.message);
+    return res.status(500).json({
+      error: "Failed to fetch listings",
+    });
+  }
+};
 
 const getListingById = async (req, res) => {
   try {
     const { id } = req.params;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!Types.ObjectId.isValid(id)) {
       return res.status(400).json({
         error: "Invalid listing id",
       });
@@ -33,7 +46,7 @@ const placeBid = async (req, res) => {
     const { id } = req.params;
     const { bidAmount } = req.body;
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!Types.ObjectId.isValid(id)) {
       return res.status(400).json({
         error: "Invalid listing id",
       });
@@ -65,6 +78,12 @@ const placeBid = async (req, res) => {
       });
     }
 
+    if (numericBidAmount < listing.startingPrice) {
+      return res.status(400).json({
+        error: "Bid amount must be at least the starting price",
+      });
+    }
+
     if (numericBidAmount <= listing.currentBid) {
       return res.status(400).json({
         error: "Bid amount must be higher than the current bid",
@@ -87,6 +106,7 @@ const placeBid = async (req, res) => {
 };
 
 module.exports = {
+  getListings,
   getListingById,
   placeBid,
 };

@@ -1,0 +1,102 @@
+.before-buy {
+  width: 100%;
+  margin-top: 200px;
+}
+
+.before-buy__title {
+  margin: 0 0 10px;
+  color: #000000;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17px;
+}
+
+.before-buy__card {
+  display: grid;
+  grid-template-columns: max-content 1px 1fr;
+  align-items: stretch;
+  width: 100%;
+  height: 88px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  background: #ffffff;
+}
+
+.before-buy__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  padding-right: 22px;
+}
+
+.before-buy__text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.before-buy__text {
+  margin: 0;
+  text-align: left;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+}
+
+.before-buy__text--top {
+  color: #222222;
+}
+
+.before-buy__text--bottom {
+  color: #696762;
+}
+
+.before-buy__logo {
+  display: block;
+  width: 82px;
+  height: 12px;
+  object-fit: contain;
+}
+
+.before-buy__divider {
+  width: 1px;
+  height: 100%;
+  background: #d9d9d9;
+}
+
+.before-buy__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  gap: 8px;
+  height: 100%;
+  padding-left: 22px;
+  text-decoration: none;
+}
+
+.before-buy__link:focus-visible {
+  outline: 2px solid #1a90e0;
+  outline-offset: 2px;
+}
+
+.before-buy__link-text {
+  color: #007acd;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  text-decoration: underline;
+}
+
+.before-buy__link-icon {
+  display: block;
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}

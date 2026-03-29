@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const path = require("path");
 const connectDB = require("./config/db");
 const listingRoutes = require("./routes/listingRoutes");
 const Item = require("./models/itemModel");
@@ -11,7 +12,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.get("/", (req, res) => {
   res.send("Server is running.");
@@ -70,34 +71,26 @@ async function startServer() {
   }
 }
 
-app.get("/search", async (req,res) =>
-{
-  try
-  {
-    const { query } = req.query
+app.get("/search", async (req, res) => {
+  try {
+    const { query } = req.query;
 
-    if (!query)
-    {
-      return res.status(400).json({ message: "Please enter a search" })
+    if (!query) {
+      return res.status(400).json({ message: "Please enter a search" });
     }
 
-    const keyWords = query.split(" ")
+    const keyWords = query.split(" ");
 
     const listings = await Item.db.collection("auction-listings").find({
-      $or: keyWords.map(query =>
-      ({
-        title: { $regex: query, $options: "i"}
-      })
-      )
-    }).toArray()
+      $or: keyWords.map((query) => ({
+        title: { $regex: query, $options: "i" },
+      })),
+    }).toArray();
 
-    res.json(listings)
+    res.json(listings);
+  } catch (error) {
+    res.status(500).json({ message: "Search failed", error: error.message });
   }
-  catch (error)
-  {
-    res.status(500).json({ message: "Search failed", error: error.message })
-  }
-}
-)
+});
 
 startServer();
