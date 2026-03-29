@@ -1,6 +1,8 @@
 import "./SearchResults.css"
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
+import icon_eye from "./assets/icon_eye.png"
+import icon_binoculars from "./assets/icon_binoculars.png"
 import Header from "../../common/Header"
 import Footer from "../../common/Footer"
 
@@ -60,7 +62,15 @@ function SearchResults()
         {listings.map((listing) =>
         (
           <div key={listing._id} className="listingCard">
-            <img src={fetchImagePath(listing.image)} alt={listing.title} className="listingImage"/>
+            <div className="imageArea">
+              <img src={fetchImagePath(listing.image)} alt={listing.title} className="listingImage"/>
+                <button className="leftIcon">
+                  <img src={icon_eye}/>
+                </button>
+                <button className="rightIcon">
+                  <img src={icon_binoculars}/>
+                </button>
+            </div>
             <div className="listingInfo">
               <div className="listingTitle">{listing.title}</div>
               <div className="listingDescription">{listing.description}</div>

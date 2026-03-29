@@ -79,8 +79,49 @@
     padding: 15px;
 }
 
+.imageArea
+{
+    position: relative;
+    display: inline-block;
+}
+
+.leftIcon
+{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    top: 0;
+    left: 0;
+    border-top: 60px solid orange;
+    border-right: 60px solid transparent;
+}
+
+.leftIcon img
+{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -50px;
+    left: 7.5px;
+}
+
+.rightIcon
+{
+    position: absolute;
+    top: 10px;
+    width: 24px;
+    height: 24px;
+    z-index: 10;
+    right: 10px;
+}
+
 .listingImage
 {
+    display: block;
     width: 100%;
     height: 30vh;
     object-fit: cover;
