@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom"
 import icon_eye from "./assets/icon_eye.png"
 import icon_binoculars_plus from "./assets/icon_binoculars_plus.png"
 import icon_binoculars_minus from "./assets/icon_binoculars_minus.png"
+import filter from "./assets/filter.png"
 import Header from "../../common/Header"
 import Footer from "../../common/Footer"
 
@@ -59,11 +60,14 @@ function SearchResults()
         <button className="homePath" onClick={() => window.location.href = "http://localhost:5173"}>Home</button>
         <p> / Marketplace / Home & Living</p>
       </div>
-      <p className="category">Home & Living</p>
+      <p className="heading">Home & Living</p>
     </div>
 
     <div className="filters">
-      <div className="labelsRefine">Refine &#x25BE; </div>
+      <div className="labelsRefine">
+        <img src={filter}/>
+        <span>Refine &#x25BE;</span>
+      </div>
       <div className="labels">Category &#x25BE;</div>
       <div className="labels">All Locations &#x25BE;</div>
       <div className="labels">New & Used &#x25BE;</div>
