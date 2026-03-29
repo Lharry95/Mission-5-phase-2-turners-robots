@@ -5,6 +5,8 @@ import icon_eye from "./assets/icon_eye.png"
 import icon_binoculars_plus from "./assets/icon_binoculars_plus.png"
 import icon_binoculars_minus from "./assets/icon_binoculars_minus.png"
 import filter from "./assets/filter.png"
+import clock from "./assets/clock.png"
+import comparison from "./assets/comparison.png"
 import Header from "../../common/Header"
 import Footer from "../../common/Footer"
 
@@ -14,6 +16,8 @@ function SearchResults()
   const [sortBy, setSortBy] = useState("Best Match")
   const [sortDropdown, setSortDropdown] = useState(false)
   const [watchlist, setWatchlist] = useState(true)
+  const [quickview, setQuickview] = useState(false)
+  const [currentListing, setCurrentListing] = useState(0)
 
   const [searchParams] = useSearchParams()
   const query = searchParams.get("q")
@@ -54,6 +58,93 @@ function SearchResults()
 
   return (
   <div className="searchResultsPage">
+    {quickview &&
+              (
+                <div className="quickviewOverlay">
+                  <div className="quickviewMain">
+                    <button className="navLeft" onClick={() => setCurrentListing(prev => (prev - 1 + listings.length) % listings.length)}>
+                      <span>&#8592;</span>
+                    </button>
+
+                    <div className="quickviewListing">
+                      <div className="quickviewMainContent">
+                      <button className="closeQuickview" onClick={() => setQuickview(false)}>X</button>
+                      <div className="quickLeft">
+                        <img src={fetchImagePath(listings[currentListing].image)} className="quickviewImage"/>
+                        <div className="quickDetails">
+                          <div className="quickDetailsHeader">Product Details</div>
+                          <div className="detailsRow">
+                            <div className="quickLabel">Condition</div>
+                            <div className="quickValue">As is</div>
+                          </div>
+                          <div className="detailsRow">
+                            <div className="quickLabel">Dimensions</div>
+                            <div className="quickValue">W 75cm x H 75cm x D 34cm</div>
+                          </div>
+                          <div className="detailsRow">
+                            <div className="quickLabel">Shipping & pick-up</div>
+                            <div className="quickValue">Free - Pick-up only</div>
+                          </div>
+                          <div className="detailsRow">
+                            <div className="quickLabel">Payment Options</div>
+                            <div className="quickValue">Cash or NZ Bank Deposit</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="quickRight">
+                        <button className="quickWatchlist" onClick={() => watchlistToggle(listings[currentListing]._id)}>
+                          <img src={watchlist[listings[currentListing]._id] ? icon_binoculars_minus : icon_binoculars_plus}/>
+                        </button>
+                        <p className="quickTitle">Wooden Desk</p>
+                        <div className="listingTime">
+                          <img src={clock}/>
+                          <div className="dateTime">
+                            <p>Closes: Fri 13th March 8:22PM</p>
+                            <p className="exactTime">4 days, 4 hours, 50 minutes</p>
+                          </div>
+                        </div>
+                          <button className="addComparison">
+                            <img src={comparison}/>
+                            <p>Add to Comparison Table</p>
+                            <p>&#x21FE;</p>
+                          </button>
+                          <div className="bidArea">
+                            <div className="buyArea">
+                              <p className="buyNow">Buy Now</p>
+                              <div className="buyNowPrice">${listings[currentListing]?.price}</div>
+                              <button className="buyButton">Buy Now</button>
+                            </div>
+                            <div className="placeBid">
+                              <p className="startingPriceTitle">Starting price</p>
+                              <p className="startingPrice">$2.00</p>
+                              <div className="bidInfo">
+                                <p className="minBid">Min. starting bid: $2.00</p>
+                                <div className="bidFunction">
+                                  <input type="number" className="typeBid"></input>
+                                  <button className="bidButton">Place bid</button>
+                              </div>
+                              </div>
+                              <p className="generalText">No reserve</p>
+                              <p className="generalText">No bids</p>
+                            <div className="offer">
+                              <p>This seller is open to offers</p>
+                              <button className="offerButton">Make an offer</button>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="fullDetails">
+                        <button className="fullDetailsButton">View Full Details</button>
+                      </div>
+                      </div>
+                      <button className="navRight" onClick={() => setCurrentListing(prev => (prev + 1) % listings.length)}>
+                      <span>&#8594;</span>
+                    </button>
+                    </div>
+                  </div>
+              )}
     <Header/>
     <div className="searchHeader">
       <div className="paths">
@@ -98,7 +189,7 @@ function SearchResults()
           <div key={listing._id} className="listingCard">
             <div className="imageArea">
               <img src={fetchImagePath(listing.image)} alt={listing.title} className="listingImage"/>
-                <button className="leftIcon">
+                <button className="leftIcon" onClick={() => {setQuickview(true); setCurrentListing(listings.findIndex(index => index._id === listing._id))}}>
                   <img src={icon_eye}/>
                 </button>
                 <button className="rightIcon" onClick={() => watchlistToggle(listing._id)}>
@@ -129,7 +220,27 @@ function SearchResults()
     </div>
     <Footer/>
   </div>
+  
   )
 }
 
 export default SearchResults;
+
+// {quickview &&
+//               (
+//                 <div className="quickviewOverlay" onClick={() => setQuickview(false)}>
+//                   <div className="quickviewMain">
+//                     <button className="navLeft" onClick={() => setCurrentIndex(prev => (prev - 1 + listings.length) % listings.length)}>
+//                       <span>&#8592;</span>
+//                     </button>
+
+//                     <div>
+//                       <img src={fetchImagePath(listings[currentListing].image)} className="quickviewImage"/>
+//                     </div>
+
+//                     <button className="navRight" onClick={() => setCurrentIndex(prev => (prev + 1) % listings.length)}>
+//                       <span>&#8594;</span>
+//                     </button>
+//                   </div>
+//                 </div>
+//               )}
