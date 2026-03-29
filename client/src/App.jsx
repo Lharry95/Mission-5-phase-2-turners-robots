@@ -13,8 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/comparison" element={<ComparisonHomePage />} />
         <Route path="/comparison/table" element={<ComparisonTable />} />
-
-        <Route path="/productlisting" element={<ProductListing />} />
+        <Route path="/productlisting/:id" element={<ProductListing />} />{" "}
         <Route path="/searchresults" element={<SearchResults />} />
       </Routes>
     </>
