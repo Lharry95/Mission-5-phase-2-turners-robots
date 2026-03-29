@@ -58,4 +58,34 @@ async function startServer() {
   }
 }
 
+app.get("/search", async (req,res) =>
+{
+  try
+  {
+    const { query } = req.query
+
+    if (!query)
+    {
+      return res.status(400).json({ message: "Please enter a search" })
+    }
+
+    const keyWords = query.split(" ")
+
+    const listings = await Item.db.collection("auction-listings").find({
+      $or: keyWords.map(query =>
+      ({
+        title: { $regex: query, $options: "i"}
+      })
+      )
+    }).toArray()
+
+    res.json(listings)
+  }
+  catch (error)
+  {
+    res.status(500).json({ message: "Search failed", error: error.message })
+  }
+}
+)
+
 startServer();
