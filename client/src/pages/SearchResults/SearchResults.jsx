@@ -11,6 +11,7 @@ function SearchResults()
 {
   const [listings, setListings] = useState([])
   const [sortBy, setSortBy] = useState("Best Match")
+  const [sortDropdown, setSortDropdown] = useState(false)
   const [watchlist, setWatchlist] = useState(true)
 
   const [searchParams] = useSearchParams()
@@ -38,9 +39,13 @@ function SearchResults()
     return image[path].default
   }
 
-  function watchlistToggle()
+  const watchlistToggle = (id) =>
   {
-    setWatchlist(!watchlist)
+    setWatchlist(prev =>
+    ({
+      ...prev, [id]: !prev[id]
+    }))
+    console.log(`Watchlist status updated for id: ${id}`)
   }
 
   // Used for debugging in the case where data was not being displayed to the DOM
@@ -50,21 +55,38 @@ function SearchResults()
   <div className="searchResultsPage">
     <Header/>
     <div className="searchHeader">
-      <p className="paths">Home / Marketplace / Home & Living</p>
+      <div className="paths">
+        <button className="homePath" onClick={() => window.location.href = "http://localhost:5173"}>Home</button>
+        <p> / Marketplace / Home & Living</p>
+      </div>
       <p className="category">Home & Living</p>
     </div>
 
     <div className="filters">
-      <div className="labels">Refine</div>
-      <div className="labels">Category</div>
-      <div className="labels">All Locations</div>
-      <div className="labels">New & Used</div>
-      <div className="labels">Shipping: All</div>
+      <div className="labelsRefine">Refine &#x25BE; </div>
+      <div className="labels">Category &#x25BE;</div>
+      <div className="labels">All Locations &#x25BE;</div>
+      <div className="labels">New & Used &#x25BE;</div>
+      <div className="labels">Shipping: All &#x25BE;</div>
     </div>
     <div className="searchResultsMain">
       <div className="searchResultsHeader">
         <div className="resultsShown">Showing {listings.length} results for '{query}'</div>
-        <div className="sorting">Sort: {sortBy}</div>
+        <div className="sortingArea">
+        <button className="sorting" onClick={() => setSortDropdown(!sortDropdown)}>
+          <div>Sort: {sortBy}</div>
+          <div className="sortArrow">&#x25BE;</div>
+        </button>
+
+        {sortDropdown &&
+        (
+          <ul className="sortDropdown">
+            <li onClick={() => {setSortBy("Best Match"); setSortDropdown(false)}}>Best Match</li>
+            <li onClick={() => {setSortBy("Lowest Buy Now"); setSortDropdown(false)}}>Lowest Buy Now</li>
+          </ul>
+        )}
+      </div>
+
       </div>
       <div className="resultsGrid">
         {listings.map((listing) =>
@@ -75,8 +97,8 @@ function SearchResults()
                 <button className="leftIcon">
                   <img src={icon_eye}/>
                 </button>
-                <button className="rightIcon" onClick={watchlistToggle}>
-                  <img src={watchlist ? icon_binoculars_minus : icon_binoculars_plus}/>
+                <button className="rightIcon" onClick={() => watchlistToggle(listing._id)}>
+                  <img src={watchlist[listing._id] ? icon_binoculars_minus : icon_binoculars_plus}/>
                 </button>
             </div>
             <div className="listingInfo">
