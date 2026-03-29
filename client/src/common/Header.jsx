@@ -69,7 +69,7 @@ function Header() {
           <img src={logo} alt="Trade Me" className="logo-img" />
         </div>
         <nav className="header-nav">
-          <Link to="/comparisontable" className="link">
+          <Link to="/comparison" className="link">
             <div className="nav-item">
               <img src={comparisonIcon} alt="Comparison" className="nav-icon" />
             </div>
