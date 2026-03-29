@@ -72,11 +72,11 @@ function ColumnDisplay({ data, category }) {
               <div key={index} className={styles.comparisonCard}>
                 {slot ? (
                   <div>
-                    <h2>{slot.name}</h2>
+                    <h2>{slot.title}</h2>
                     <img
                       className={styles.productImage}
                       src={slot.image}
-                      alt={slot.name}
+                      alt={slot.title}
                     />
 
                     <p>
@@ -132,7 +132,7 @@ function ColumnDisplay({ data, category }) {
             container.scrollBy({ left: -320, behavior: "smooth" });
           }}
         >
-          {<img src={prevListingIcon} alt="next listing" />}
+          {<img src={prevListingIcon} alt="previous listing" />}
         </button>
         <button
           className={styles.nextBtn}
