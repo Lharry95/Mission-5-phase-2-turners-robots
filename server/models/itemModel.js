@@ -6,6 +6,10 @@ const itemSchema = mongoose.Schema({
   dimensions: { type: String, required: true },
   shipping_and_pickup: { type: String, required: true },
   payment_options: { type: String, required: true },
+  location: { type: String, required: true },
+  closing: { type: String, required: true },
+  price: { type: String, required: true },
+  image: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Item", itemSchema);

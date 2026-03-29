@@ -15,6 +15,8 @@ const ItemSchema = mongoose.Schema({
   dimensions: { type: String, required: true },
   shipping_and_pickup: { type: String, required: true },
   payment_options: { type: String, required: true },
+  location: { type: String, required: true }, // ← ADD
+  closing: { type: String, required: true }, // ← ADD
 });
 
 const Item = mongoose.model("Item", ItemSchema);
