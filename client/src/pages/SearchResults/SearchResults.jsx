@@ -2,7 +2,8 @@ import "./SearchResults.css"
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import icon_eye from "./assets/icon_eye.png"
-import icon_binoculars from "./assets/icon_binoculars.png"
+import icon_binoculars_plus from "./assets/icon_binoculars_plus.png"
+import icon_binoculars_minus from "./assets/icon_binoculars_minus.png"
 import Header from "../../common/Header"
 import Footer from "../../common/Footer"
 
@@ -10,6 +11,7 @@ function SearchResults()
 {
   const [listings, setListings] = useState([])
   const [sortBy, setSortBy] = useState("Best Match")
+  const [watchlist, setWatchlist] = useState(true)
 
   const [searchParams] = useSearchParams()
   const query = searchParams.get("q")
@@ -36,7 +38,13 @@ function SearchResults()
     return image[path].default
   }
 
-  listings.map((listing) => console.log(fetchImagePath(listing.image)))
+  function watchlistToggle()
+  {
+    setWatchlist(!watchlist)
+  }
+
+  // Used for debugging in the case where data was not being displayed to the DOM
+  // listings.map((listing) => console.log(fetchImagePath(listing.image)))
 
   return (
   <div className="searchResultsPage">
@@ -67,8 +75,8 @@ function SearchResults()
                 <button className="leftIcon">
                   <img src={icon_eye}/>
                 </button>
-                <button className="rightIcon">
-                  <img src={icon_binoculars}/>
+                <button className="rightIcon" onClick={watchlistToggle}>
+                  <img src={watchlist ? icon_binoculars_minus : icon_binoculars_plus}/>
                 </button>
             </div>
             <div className="listingInfo">
