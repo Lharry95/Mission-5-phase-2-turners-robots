@@ -1,38 +1,16 @@
+require("dotenv").config({ path: "../.env" });
 const mongoose = require("mongoose");
-const { AuctionData, Item } = require("./models/auctionData");
-const connectingDb = require("./db/databaseConnection");
+const Item = require("./models/itemSchema");
+const connectDb = require("../config/db");
 const seedData = require("./data/seedData");
 
 // map global promise - get rid of warning
 mongoose.Promise = global.Promise;
 
-const init = async () => {
-  try {
-    await connectingDb();
-  } catch (error) {
-    console.log("Error! Could not connect", error);
-    process.exit(1);
-  }
-};
-
-init();
-
-// to add an auction
-const addAuction = async (auction) => {
-  try {
-    await AuctionData.create(auction).then((auction) => {
-      console.log("New Auction Added");
-    });
-  } catch (error) {
-    console.error("Sorry! Couldn't add the auction", error);
-  } finally {
-    mongoose.connection.close();
-  }
-};
-
 // add specific item
 const addItem = async (item) => {
   try {
+    await connectDb();
     await Item.create(item).then((item) => {
       console.log("New Item Added");
     });
@@ -46,73 +24,23 @@ const addItem = async (item) => {
 // list all items
 const listItems = async () => {
   try {
+    await connectDb();
     await Item.find().then((items) => {
       console.log(items);
-      console.log(`${items.length} Auctions`);
+      console.log(`${items.length} items`);
     });
   } catch (error) {
-    console.error("Couldn't find the Auction List", error);
+    console.error("Couldn't find the item List", error);
   } finally {
     mongoose.connection.close();
   }
 };
 
-// to find a specific auction using any word in the title or the whole title.
-const findAuction = async (title) => {
-  // make case insensitive
-  const search = new RegExp(title, "i");
-  try {
-    const auctions = await AuctionData.find({ title: search });
-    console.log(auctions);
-    console.log(`${auctions.length} matches`);
-  } catch (error) {
-    console.error("Uh oh, can't find the Auction", error);
-  } finally {
-    mongoose.connection.close();
-  }
-};
-
-// update an auction
-const updateAuction = async (_id, auction) => {
-  try {
-    AuctionData.updateOne({ _id }, auction).then((auction) => {
-      console.log("Auction updated");
-    });
-  } catch (error) {
-    console.error("Sorry couldn't update this!", error);
-  } finally {
-    mongoose.connection.close();
-  }
-};
-
-// delete one auction
-const deleteAuction = async (_id) => {
-  try {
-    AuctionData.deleteOne({ _id }).then((auction) => {
-      console.log("Auction removed");
-    });
-  } catch (error) {
-    console.error("Auction wasn't removed, something went wrong", error);
-  } finally {
-    mongoose.connection.close();
-  }
-};
-
-// delete all the auctions
-const deleteAll = async () => {
-  try {
-    AuctionData.deleteMany().then((auctions) => {
-      console.log("All auctions successfully removed from Mongo!");
-      mongoose.connection.close();
-    });
-  } catch (error) {
-    console.error("Auctions weren't removed, something went wrong", error);
-  }
-};
 // delete all the items
 const deleteAllItems = async () => {
   try {
-    Item.deleteMany().then((items) => {
+    await connectDb();
+    await Item.deleteMany().then((items) => {
       console.log("All items successfully removed from Mongo!");
       mongoose.connection.close();
     });
@@ -121,25 +49,12 @@ const deleteAllItems = async () => {
   }
 };
 
-// list all the auctions in the list
-const listAuctions = async () => {
-  try {
-    AuctionData.find().then((auctions) => {
-      console.log(auctions);
-      console.log(`${auctions.length} Auctions`);
-    });
-  } catch (error) {
-    console.error("Couldn't find the Auction List", error);
-  } finally {
-    mongoose.connection.close();
-  }
-};
-
 // seed all the auctions in seedData.js to mongoDB
-const seedAuctions = async () => {
+const seedItems = async () => {
   try {
-    AuctionData.insertMany(seedData).then((auctions) => {
-      console.log("All auctions seeded successfully to MongoDB");
+    await connectDb();
+    await Item.insertMany(seedData).then((items) => {
+      console.log("All items seeded successfully to MongoDB");
     });
   } catch (error) {
     console.error("Something went wrong. Couldn't seed data!", error);
@@ -149,14 +64,8 @@ const seedAuctions = async () => {
 };
 
 module.exports = {
-  addAuction,
-  findAuction,
-  updateAuction,
-  deleteAuction,
-  listAuctions,
-  seedAuctions,
-  deleteAll,
   addItem,
   listItems,
   deleteAllItems,
+  seedItems,
 };

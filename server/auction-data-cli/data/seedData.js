@@ -1,31 +1,30 @@
 const seedData = [
   {
-    title: "Blue Chair",
-    description:
-      "Has a fluffy texture, good used condition, no scratches or broken parts",
-    start_price: 100,
-    reserve_price: 20,
+    title: "Wooden Desk",
+    image: "/uploads/wooden-desk.png",
+    price: "$25.00",
+    condition: "As is",
+    dimensions: "W 75cm x H 75cm x D 34cm",
+    shipping_and_pickup: "Free - Pick-up only",
+    payment_options: "Cash / NZ Bank Deposit",
   },
   {
-    title: "Toyota Vanguard 2011",
-    description:
-      "Automatic, a few scratches and bumps around the exterior otherwise works well. Has been a good reliable car for a longe time. On 151,000km",
-    start_price: 5000,
-    reserve_price: 10,
+    title: "Solid Teak Study Desk",
+    image: "/uploads/solid-teak-study-desk.png",
+    price: "$30.00",
+    condition: "Good",
+    dimensions: "W 85cm x H 70cm x D 50cm",
+    shipping_and_pickup: "Free - Pick-up only",
+    payment_options: "Cash / NZ Bank Deposit",
   },
   {
-    title: "Sony XMH500 headphones",
-    description:
-      "Recently bought for $500 but doesn't fit my head well. Almost brand new.",
-    start_price: 350,
-    reserve_price: 50,
-  },
-  {
-    title: "Apple Iphone 16 Pro Max",
-    description:
-      "Is 256gb. Slight scratch on the top left hand corner otherwise is working fine.",
-    start_price: 1050,
-    reserve_price: 50,
+    title: "Solid Rimu Desk",
+    image: "/uploads/wooden-desk.png",
+    price: "$25.00",
+    condition: "As New",
+    dimensions: "W 85cm x 75cm x D 40cm",
+    shipping_and_pickup: "Free - Pick-up only",
+    payment_options: "Cash / NZ Bank Deposit",
   },
 ];
 module.exports = seedData;
