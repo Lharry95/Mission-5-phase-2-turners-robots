@@ -1,5 +1,5 @@
 .headerTitles {
-  padding: 15rem 5rem 1rem 5rem;
+  padding: 11rem 5rem 1rem 5rem;
 
   background-color: #f2f2f2;
   font-family: "Oswald", sans-serif;
@@ -92,6 +92,18 @@
   font-weight: bold;
 }
 
+.mobileTableWrapper {
+  position: relative;
+}
+
+.comparisonScroll {
+  width: 100%;
+}
+
+.nextBtn {
+  display: none;
+}
+
 /* tablet view */
 @media only screen and (max-width: 1024px) {
   .headerTitles {
@@ -99,8 +111,10 @@
   }
 
   .comparisonContainer {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 1rem 1.5rem 2rem 1.5rem;
+    display: flex;
+    gap: 16px;
+    padding: 1rem;
+    width: max-content;
   }
 
   .comparisonCard {
@@ -111,18 +125,44 @@
 /* mobile view */
 @media only screen and (max-width: 768px) {
   .headerTitles {
-    padding: 1rem 1rem 0.5rem 1rem;
+    padding: 10rem 1rem 0.5rem 1rem;
+  }
+
+  .comparisonTableHeader1 {
+    font-size: 22px;
+  }
+
+  .mobileTableWrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .comparisonScroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .comparisonScroll::-webkit-scrollbar {
+    display: none;
   }
 
   .comparisonContainer {
-    grid-template-columns: 2fr;
+    display: flex;
+    gap: 16px;
+
     padding: 1rem;
-    gap: 20px;
+    width: max-content;
   }
 
   .comparisonCard {
-    min-height: 220px;
-    padding: 1.5rem;
+    min-width: 220px;
+    max-width: 220px;
+    min-height: 420px;
+    padding: 1.25rem;
+    flex-shrink: 0;
   }
 
   .comparisonTableHeader1 {
@@ -136,5 +176,30 @@
   .addProductBtn img {
     width: 40px;
     height: 40px;
+  }
+
+  .productImage {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  .nextBtn {
+    display: block;
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(120, 120, 120, 0.85);
+    color: white;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
   }
 }
