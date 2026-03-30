@@ -13,13 +13,29 @@ function ColumnDisplay({ data, category }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // for columns - starts empty before items placed inside
-  const [comparisonSlots, setComparisonSlots] = useState([
-    null,
-    null,
-    null,
-    null,
-  ]);
+  // Initialize from localStorage FIRST
+  const [comparisonSlots, setComparisonSlots] = useState(() => {
+    const saved = localStorage.getItem(`comparison_${category}`);
+
+    try {
+      return saved ? JSON.parse(saved) : [null, null, null, null];
+    } catch (error) {
+      console.error("Invalid localStorage data:", saved);
+      return [null, null, null, null];
+    }
+  });
+
+  const updateSlots = (updater) => {
+    setComparisonSlots((prevSlots) => {
+      const newSlots =
+        typeof updater === "function" ? updater(prevSlots) : updater;
+
+      localStorage.setItem(`comparison_${category}`, JSON.stringify(newSlots));
+
+      return newSlots;
+    });
+  };
+
   // pull item from product listing page into specific slot
   useEffect(() => {
     if (
@@ -31,9 +47,20 @@ function ColumnDisplay({ data, category }) {
       // get values from location state
       const { selectedItem, slotIndex } = location.state;
 
-      setComparisonSlots((prevSlots) => {
+      // makes sure id field exists
+      // Handle missing image field
+      const transformedItem = {
+        ...selectedItem,
+        _id: selectedItem._id,
+        id: selectedItem._id || selectedItem.id,
+        image: selectedItem.image || "/uploads/placeholder.png",
+      };
+      console.log("location.state:", location.state);
+
+      updateSlots((prevSlots) => {
         const updatedSlots = [...prevSlots];
-        updatedSlots[slotIndex] = selectedItem;
+        updatedSlots[slotIndex] = transformedItem;
+
         return updatedSlots;
       });
     }
@@ -41,9 +68,11 @@ function ColumnDisplay({ data, category }) {
 
   // when add product button is clicked - sends to search results page and directly to the category that was chosen in the comparison page.
   function handleGoToSearch(slotIndex) {
-    navigate(`/searchresults/?q=${encodeURIComponent(category)}`, {
-      state: { slotIndex: slotIndex, category: category },
-    });
+    navigate(
+      `/searchresults/?q=${encodeURIComponent(
+        category
+      )}&slotIndex=${slotIndex}&category=${encodeURIComponent(category)}`
+    );
   }
 
   const filledColumns = comparisonSlots.filter((slot) => slot !== null).length;
@@ -73,17 +102,24 @@ function ColumnDisplay({ data, category }) {
               <div key={index} className={styles.comparisonCard}>
                 {slot ? (
                   <div>
+                    <RemoveItemButton
+                      slotIndex={index}
+                      comparisonSlots={comparisonSlots}
+                      setComparisonSlots={updateSlots}
+                    />
                     <h2>{slot.title}</h2>
                     <img
                       className={styles.productImage}
-                      src={slot.image}
+                      src={slot.images || "/uploads/placeholder.png"} // ← Change this
                       alt={slot.title}
+                      onError={(e) => {
+                        e.target.src = "/uploads/placeholder.png";
+                      }}
                     />
 
                     <p>
-                      <strong>Price:</strong> Buy now
-                      <br />
-                      {slot.price}
+                      <strong>Buy now</strong>
+                      <br />${slot.buyNowPrice}
                     </p>
                     <p>
                       <strong>Condition:</strong> {slot.condition}
@@ -97,11 +133,16 @@ function ColumnDisplay({ data, category }) {
                     <p>
                       <strong>Payment:</strong> {slot.payment_options}
                     </p>
-
-                    <RemoveItemButton
-                      comparisonSlots={comparisonSlots}
-                      setComparisonSlots={setComparisonSlots}
-                    />
+                    <button
+                      className={styles.viewDetailsBtn}
+                      onClick={() =>
+                        navigate(`/productlisting/${slot._id}`, {
+                          state: { from: "comparison" },
+                        })
+                      }
+                    >
+                      <p className={styles.fullDetailsBtn}>View Full Details</p>
+                    </button>
                   </div>
                 ) : (
                   <button

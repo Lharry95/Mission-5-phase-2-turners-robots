@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./ListingActions.css";
 
-function ListingActions({ product }) {
+function ListingActions({ product, slotIndex }) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [added, setAdded] = useState(false);
@@ -32,7 +32,7 @@ function ListingActions({ product }) {
     navigate("/comparison/table", {
       state: {
         selectedItem: product,
-        slotIndex: location.state?.slotIndex,
+        slotIndex: slotIndex ?? 0,
       },
     });
   };

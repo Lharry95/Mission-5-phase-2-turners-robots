@@ -1,26 +1,28 @@
 .headerTitles {
-  padding: 11rem 5rem 1rem 5rem;
-
+  padding: 11rem 2.5rem 1rem 2.5rem;
   background-color: #f2f2f2;
   font-family: "Oswald", sans-serif;
 }
 
 .comparisonTablePaths {
-  padding-bottom: 30px;
+  padding-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #6f6f6f;
 }
 
 .comparisonTablePaths span {
   color: #4854d3;
 }
+
 .comparisonTableHeader1 {
-  font-size: 28px;
+  font-size: 3rem;
   color: #4854d3;
   font-weight: 900;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   padding-bottom: 1rem;
+  line-height: 1;
 }
 
-/* wooden desk part in the header */
 .desks {
   color: #f9af2c;
 }
@@ -29,7 +31,15 @@
   color: #4854d3;
   text-decoration: none;
   border: none;
+  background: transparent;
+  font-family: "Oswald", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
 }
+
 .goBackBtn img {
   padding-top: 0.2rem;
   padding-right: 0.2rem;
@@ -38,69 +48,205 @@
 .comparisonContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 0.5rem 5rem 2rem 5rem;
+  gap: 12px;
+  padding: 0.5rem 2.5rem 2rem 2.5rem;
   background-color: #f2f2f2;
+  align-items: stretch;
 }
 
 /* individual columns */
 .comparisonCard {
-  min-height: 600px;
-  padding: 2rem;
+  min-height: 730px;
+  padding: 0.8rem;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 18px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
   text-align: center;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
   transition: all 0.2s ease;
+  overflow: hidden;
+  position: relative;
 }
 
 .comparisonCard:hover {
-  outline: 5px solid #1a90e0;
+  outline: 3px solid #1a90e0;
+}
+
+.comparisonCard h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #44413c;
+  text-align: left;
+  margin: 0 0 1rem 0;
+  min-height: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.productImage {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.comparisonCard p {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Buy now section */
+.comparisonCard p:nth-of-type(1) {
+  text-align: center;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  padding: 0.3rem 0 1rem 0;
+}
+
+.comparisonCard p:nth-of-type(1) strong {
+  display: block;
+  font-weight: 400;
+  color: #555;
+}
+
+.comparisonCard p:nth-of-type(1) br + * {
+  font-size: inherit;
+}
+
+/* detail rows */
+.comparisonCard p:nth-of-type(2),
+.comparisonCard p:nth-of-type(3),
+.comparisonCard p:nth-of-type(4),
+.comparisonCard p:nth-of-type(5) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  min-height: 56px;
+  padding: 0 0.9rem;
+  font-size: 0.95rem;
+  border-top: 1px solid #efc04b;
+  background: #efefef;
+  color: #777;
+}
+
+.comparisonCard p:nth-of-type(2) strong,
+.comparisonCard p:nth-of-type(3) strong,
+.comparisonCard p:nth-of-type(4) strong,
+.comparisonCard p:nth-of-type(5) strong {
+  color: #44413c;
+  font-weight: 700;
+  min-width: 95px;
+  text-align: left;
+  margin-right: 1rem;
+}
+
+/* make label side look warmer like screenshot */
+.comparisonCard p:nth-of-type(2),
+.comparisonCard p:nth-of-type(3),
+.comparisonCard p:nth-of-type(4),
+.comparisonCard p:nth-of-type(5) {
+  background: linear-gradient(
+    to right,
+    #f3b325 0,
+    #f3b325 32%,
+    #efefef 32%,
+    #efefef 100%
+  );
+}
+
+/* price style */
+.comparisonCard p:nth-of-type(1) {
+  font-size: 1rem;
+}
+
+.comparisonCard p:nth-of-type(1)::after {
+  content: "";
+  display: block;
+}
+
+.removeBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  z-index: 2;
+}
+
+.removeBtn {
+  background-color: #d9d9d9;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.removeBtn:hover {
+  background-color: #c8c8c8;
+}
+
+.viewDetailsBtn {
+  margin-top: auto;
+  width: 100%;
+  border: none;
+  background: #4854d3;
+  border-radius: 6px;
+  height: 44px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.fullDetailsBtn {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.viewDetailsBtn:hover {
+  background: #3f4ac1;
 }
 
 .addProductBtn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 0.6rem;
   color: #4854d3;
   background: none;
   border: none;
   cursor: pointer;
   font-family: "Oswald", sans-serif;
-  font-size: 18px;
+  font-size: 1.7rem;
   font-weight: 600;
+  height: 100%;
+  min-height: 650px;
 }
 
 .addProductBtn img {
-  width: 50px;
-  height: 50px;
+  width: 58px;
+  height: 58px;
 }
 
 .btnPara {
   color: #44413c;
   font-weight: 300;
-}
-.removeBtnContainer {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-}
-
-.removeBtn {
-  background-color: #4854d3;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  font-weight: bold;
+  font-size: 1rem;
 }
 
 .mobileTableWrapper {
@@ -122,6 +268,7 @@
 .linkBackToLandingPage {
   display: none;
 }
+
 /* tablet view */
 @media only screen and (max-width: 1024px) {
   .headerTitles {
@@ -136,7 +283,15 @@
   }
 
   .comparisonCard {
-    min-height: 250px;
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 700px;
+    flex-shrink: 0;
+  }
+
+  .addProductBtn {
+    min-width: 300px;
+    min-height: 700px;
   }
 }
 
@@ -145,12 +300,13 @@
   .linkBackToLandingPage {
     display: inline-block;
   }
+
   .headerTitles {
     padding: 10rem 1rem 0.5rem 1rem;
   }
 
   .comparisonTableHeader1 {
-    font-size: 22px;
+    font-size: 2rem;
   }
 
   .mobileTableWrapper {
@@ -172,37 +328,44 @@
   .comparisonContainer {
     display: flex;
     gap: 16px;
-
     padding: 1rem;
     width: max-content;
   }
 
   .comparisonCard {
-    min-width: 220px;
-    max-width: 220px;
-    min-height: 420px;
-    padding: 1.25rem;
+    min-width: 260px;
+    max-width: 260px;
+    min-height: 620px;
+    padding: 0.8rem;
     flex-shrink: 0;
   }
 
-  .comparisonTableHeader1 {
-    font-size: 22px;
-  }
-
   .addProductBtn {
-    font-size: 16px;
-  }
-
-  .addProductBtn img {
-    width: 40px;
-    height: 40px;
+    min-width: 260px;
+    min-height: 620px;
+    font-size: 1.3rem;
   }
 
   .productImage {
     width: 100%;
-    max-width: 180px;
-    height: auto;
+    height: 180px;
     border-radius: 16px;
+  }
+
+  .comparisonCard p:nth-of-type(2),
+  .comparisonCard p:nth-of-type(3),
+  .comparisonCard p:nth-of-type(4),
+  .comparisonCard p:nth-of-type(5) {
+    font-size: 0.88rem;
+    padding: 0 0.7rem;
+  }
+
+  .comparisonCard p:nth-of-type(2) strong,
+  .comparisonCard p:nth-of-type(3) strong,
+  .comparisonCard p:nth-of-type(4) strong,
+  .comparisonCard p:nth-of-type(5) strong {
+    min-width: 80px;
+    margin-right: 0.6rem;
   }
 
   .nextBtn {
@@ -215,11 +378,7 @@
     height: 42px;
     border: none;
     border-radius: 10px;
-    background: rgba(120, 120, 120, 0.85);
-
     background: #d3d3d3;
-    transform: matrix(1, 0, 0, -1, 0, 0);
-
     color: white;
     font-size: 2rem;
     line-height: 1;
@@ -237,10 +396,7 @@
     height: 42px;
     border: none;
     border-radius: 10px;
-    background: rgba(120, 120, 120, 0.85);
-
     background: #d3d3d3;
-    transform: matrix(1, 0, 0, -1, 0, 0);
     color: white;
     font-size: 2rem;
     cursor: pointer;

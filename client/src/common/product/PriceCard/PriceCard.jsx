@@ -2,7 +2,12 @@ import { useState } from "react";
 import ListingActions from "../ListingActions/ListingActions";
 import "./PriceCard.css";
 
-function PriceCard({ listing, formattedStartingPrice, formattedBuyNowPrice }) {
+function PriceCard({
+  listing,
+  formattedStartingPrice,
+  formattedBuyNowPrice,
+  slotIndex,
+}) {
   const [isWatchlisted, setIsWatchlisted] = useState(false);
 
   return (
@@ -53,7 +58,7 @@ function PriceCard({ listing, formattedStartingPrice, formattedBuyNowPrice }) {
         </div>
       </div>
 
-      <ListingActions product={listing} />
+      <ListingActions product={listing} slotIndex={slotIndex} />
 
       <div className="price-card">
         <div className="price-card__section">
