@@ -84,11 +84,7 @@ function Home() {
             <div
               key={product._id}
               className="product-card"
-              onClick={() => {
-                if (product._id === 1) {
-                  navigate("/productlisting");
-                }
-              }}
+              onClick={() => navigate(`/productlisting/${product._id}`)}
             >
               <div className="product-image-wrapper">
                 <img
