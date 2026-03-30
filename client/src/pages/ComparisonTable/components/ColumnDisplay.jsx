@@ -1,10 +1,13 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
+
 import { useState } from "react";
 import styles from "./ColumnDisplay.module.css";
 import addProductBtn from "../../../assets/add-product-icon.png";
 import { useEffect } from "react";
 import nextListingIcon from "../../../assets/icons/Next-listing.png";
 import prevListingIcon from "../../../assets/icons/previous-listing.png";
+import goBackBtn from "../../../assets/icons/go-back-btn.png";
+import RemoveItemButton from "./RemoveItemButton";
 
 function ColumnDisplay({ data, category }) {
   const navigate = useNavigate();
@@ -17,7 +20,6 @@ function ColumnDisplay({ data, category }) {
     null,
     null,
   ]);
-
   // pull item from product listing page into specific slot
   useEffect(() => {
     if (
@@ -44,13 +46,6 @@ function ColumnDisplay({ data, category }) {
     });
   }
 
-  // when remove button is clicked - column/item is removed and state is updated
-  function handleRemoveItem(slotIndex) {
-    const updatedSlots = [...comparisonSlots];
-    updatedSlots[slotIndex] = null;
-    setComparisonSlots(updatedSlots);
-  }
-
   const filledColumns = comparisonSlots.filter((slot) => slot !== null).length;
 
   return (
@@ -62,6 +57,12 @@ function ColumnDisplay({ data, category }) {
         <h1 className={styles.comparisonTableHeader1}>
           COMPARISON TABLE: <span className={styles.desks}>{category}</span>
         </h1>
+
+        <Link to="/comparison" className={styles.linkBackToLandingPage}>
+          <button className={styles.goBackBtn}>
+            {<img src={goBackBtn} alt="Go Back" />} Go back
+          </button>
+        </Link>
       </div>
 
       <div className={styles.mobileTableWrapper}>
@@ -97,15 +98,10 @@ function ColumnDisplay({ data, category }) {
                       <strong>Payment:</strong> {slot.payment_options}
                     </p>
 
-                    <div className={styles.removeBtnContainer}>
-                      <button
-                        className={styles.removeBtn}
-                        onClick={() => handleRemoveItem(index)}
-                      >
-                        {" "}
-                        X{" "}
-                      </button>
-                    </div>
+                    <RemoveItemButton
+                      comparisonSlots={comparisonSlots}
+                      setComparisonSlots={setComparisonSlots}
+                    />
                   </div>
                 ) : (
                   <button
