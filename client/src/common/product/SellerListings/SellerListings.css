@@ -1,0 +1,198 @@
+.seller-listings {
+  width: 100%;
+}
+
+.seller-listings__inner {
+  width: 100%;
+  max-width: 1172px;
+  margin: 0 auto;
+  padding-left: 54px;
+  box-sizing: border-box;
+}
+
+.seller-listings__title {
+  margin: 0 0 32px;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.seller-listings__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 260px);
+  gap: 28px;
+  justify-content: center;
+}
+
+.seller-listings__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  height: 360px;
+  overflow: hidden;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  background: #ffffff;
+}
+
+.seller-listings__card--placeholder {
+  display: block;
+}
+
+.seller-listings__image-wrap {
+  position: relative;
+  width: 100%;
+  height: 196px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.seller-listings__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.seller-listings__quickview,
+.seller-listings__badge {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  width: 72px;
+  height: 72px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  overflow: visible;
+}
+
+.seller-listings__quickview::before,
+.seller-listings__badge::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+
+.seller-listings__quickview {
+  left: 0;
+}
+
+.seller-listings__quickview::before {
+  left: 0;
+  border-top: 72px solid #f8af2a;
+  border-right: 72px solid transparent;
+}
+
+.seller-listings__quickview:hover::before {
+  border-top-color: #ffc94d;
+}
+
+.seller-listings__badge {
+  right: 0;
+}
+
+.seller-listings__badge::before {
+  right: 0;
+  border-top: 72px solid #f8af2a;
+  border-left: 72px solid transparent;
+}
+
+.seller-listings__badge:hover::before {
+  border-top-color: #ffc94d;
+}
+
+.seller-listings__quickview:focus-visible,
+.seller-listings__badge:focus-visible {
+  outline: 2px solid #1a90e0;
+  outline-offset: 2px;
+}
+
+.seller-listings__corner-icon {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.seller-listings__quickview .seller-listings__corner-icon {
+  top: 11px;
+  left: 10px;
+}
+
+.seller-listings__badge .seller-listings__corner-icon {
+  top: 13px;
+  right: 9px;
+}
+
+.seller-listings__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px 14px 18px;
+}
+
+.seller-listings__card-title {
+  margin: 0 0 14px;
+  color: #44413d;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 19px;
+}
+
+.seller-listings__price-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: auto;
+}
+
+.seller-listings__buy-now-label {
+  color: #44413d;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+}
+
+.seller-listings__price {
+  color: #272624;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+}
+
+.seller-listings__price-value {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.seller-listings__placeholder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.seller-listings__placeholder-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: translate(-50%, -50%) scale(1.02);
+  transform-origin: center;
+}

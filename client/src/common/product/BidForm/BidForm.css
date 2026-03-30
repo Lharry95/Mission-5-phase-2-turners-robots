@@ -1,0 +1,140 @@
+.bid-form {
+  padding: 8px 20px 0;
+  margin-top: 0;
+  background: #ffffff;
+  border-left: 1px solid #d3d3d3;
+  border-right: 1px solid #d3d3d3;
+}
+
+.bid-form__min-bid {
+  margin: 0 0 8px;
+  color: #7f7c77;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  text-align: left;
+}
+
+.bid-form__row {
+  display: grid;
+  grid-template-columns: 99px 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+.bid-form__input {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 0 16px;
+  border: 1px solid #a5a5a5;
+  border-radius: 5px;
+  background: #f2f2f2;
+  appearance: none;
+  outline: none;
+  box-shadow: none;
+  color: #44413d;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+}
+
+.bid-form__input--filled {
+  border-color: #44413d;
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.bid-form__input:focus-visible {
+  border-color: #1a90e0;
+}
+
+.bid-form__button {
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  background: #ededed;
+  appearance: none;
+  color: #44413d;
+  cursor: not-allowed;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 19px;
+  text-align: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.bid-form__button--active {
+  background: #1a90e0;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.bid-form__button--active:hover {
+  background: #2894df;
+}
+
+.bid-form__button:focus-visible,
+.bid-form__offer-button:focus-visible {
+  outline: 2px solid #1a90e0;
+  outline-offset: 2px;
+}
+
+.bid-form__note {
+  margin: 12px 0 14px;
+  color: #7f7c77;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  text-align: center;
+}
+
+.bid-form__divider {
+  height: 1px;
+  margin: 0 -20px 14px;
+  background: #d3d3d3;
+}
+
+.bid-form__offer-title {
+  margin: 10px 0 6px;
+  color: #44413d;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 19px;
+}
+
+.bid-form__offer-button {
+  width: 100%;
+  height: 58px;
+  margin-bottom: 18px;
+  border: none;
+  border-radius: 5px;
+  background: rgba(165, 165, 165, 0.2);
+  color: #007acd;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 19px;
+  text-align: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.bid-form__offer-button:hover {
+  background: rgba(165, 165, 165, 0.4);
+  color: #006ab2;
+}
+
+.bid-form__error,
+.bid-form__success {
+  margin: 8px 0 12px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.bid-form__error {
+  color: #d92d20;
+}
+
+.bid-form__success {
+  color: #1a90e0;
+}

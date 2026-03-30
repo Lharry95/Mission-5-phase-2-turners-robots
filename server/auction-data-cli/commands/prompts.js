@@ -1,26 +1,3 @@
-// prompts for Auction cust
-const questionsForAuctions = [
-  {
-    type: "input",
-    name: "title",
-    message: "title:",
-  },
-  {
-    type: "input",
-    name: "description",
-    message: "description:",
-  },
-  {
-    type: "input",
-    name: "start_price",
-    message: "start_price:",
-  },
-  {
-    type: "input",
-    name: "reserve_price",
-    message: "reserve_price:",
-  },
-];
 // prompts for cust
 const questionsForItems = [
   {
@@ -60,4 +37,4 @@ const questionsForItems = [
   },
 ];
 
-module.exports = { questionsForAuctions, questionsForItems };
+module.exports = { questionsForItems };

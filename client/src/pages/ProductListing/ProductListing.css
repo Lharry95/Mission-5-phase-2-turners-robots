@@ -1,52 +1,146 @@
 .product-listing-page {
-  padding: 2rem;
+  min-height: 100vh;
+  padding-top: 14px;
+  background: #ffffff;
 }
 
-.listing-card {
-  max-width: 400px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 1rem;
-  background: #fff;
+.pl-shell {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
 }
 
-.listing-image {
-  display: block;
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+.pl-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
 }
 
-.bid-form {
+.pl-back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.pl-back-link__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1;
+  color: #007acd;
+  transform: translateY(-1px);
+}
+
+.pl-back-link__text {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  color: #007acd;
+}
+
+.pl-back-link:hover .pl-back-link__icon,
+.pl-back-link:hover .pl-back-link__text {
+  color: #359cde;
+}
+
+.pl-main {
+  display: grid;
+  grid-template-columns: minmax(0, 900px) 360px;
+  gap: 80px;
+  align-items: start;
+}
+
+.pl-left-column {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 1rem;
+  gap: 16px;
+  min-width: 0;
 }
 
-.bid-form input,
-.bid-form button {
+.pl-left-column > * {
   width: 100%;
+}
+
+.pl-right-column {
+  width: 100%;
+  max-width: 360px;
+}
+
+.pl-below-main {
+  margin-top: 22px;
+}
+
+.pl-below-main__inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 24px;
   box-sizing: border-box;
-  padding: 0.75rem;
-  font-size: 1rem;
 }
 
-.bid-form button {
-  cursor: pointer;
+.pl-below-main__inner > * {
+  width: 100%;
+  max-width: 900px;
 }
 
-.bid-form button:disabled {
-  cursor: not-allowed;
-  opacity: 0.7;
+.pl-seller-related-band {
+  width: 100%;
+  margin-top: 22px;
+  padding: 32px 0 56px;
+  background: #f6f5f4;
 }
 
-.success-message {
-  margin-top: 1rem;
-  color: green;
+.pl-seller-related-inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
 }
 
-.error-message {
-  margin-top: 1rem;
-  color: red;
+.pl-seller-listings-center,
+.pl-related-listings-center {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.pl-related-listings-center {
+  margin-top: 28px;
+}
+
+@media (max-width: 960px) {
+  .pl-shell,
+  .pl-below-main__inner,
+  .pl-seller-related-inner {
+    padding: 0 24px;
+  }
+
+  .pl-main {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .pl-right-column {
+    max-width: 100%;
+  }
+
+  .pl-below-main__inner > * {
+    max-width: 100%;
+  }
+
+  .pl-seller-related-band {
+    padding: 24px 0 40px;
+  }
 }
