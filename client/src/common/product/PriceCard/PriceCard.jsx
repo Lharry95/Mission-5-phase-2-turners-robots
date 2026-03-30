@@ -14,13 +14,17 @@ function PriceCard({ listing, formattedStartingPrice, formattedBuyNowPrice }) {
           <button
             type="button"
             className="listing-sidebar__compare-icon"
-            aria-label={isWatchlisted ? "Remove from watchlist" : "Add to watchlist"}
+            aria-label={
+              isWatchlisted ? "Remove from watchlist" : "Add to watchlist"
+            }
             aria-pressed={isWatchlisted}
             onClick={() => setIsWatchlisted((prev) => !prev)}
           >
             <img
               className="listing-sidebar__compare-icon-img"
-              src={isWatchlisted ? "/watchlist-minus.png" : "/watchlist-plus.png"}
+              src={
+                isWatchlisted ? "/watchlist-minus.png" : "/watchlist-plus.png"
+              }
               alt=""
               aria-hidden="true"
             />
@@ -49,7 +53,7 @@ function PriceCard({ listing, formattedStartingPrice, formattedBuyNowPrice }) {
         </div>
       </div>
 
-      <ListingActions />
+      <ListingActions product={listing} />
 
       <div className="price-card">
         <div className="price-card__section">
