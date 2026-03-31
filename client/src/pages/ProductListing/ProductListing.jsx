@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import Header from "../../common/layout/Header/Header";
 import Footer from "../../common/layout/Footer/Footer";
 import ProductGallery from "../../common/product/ProductGallery/ProductGallery";
@@ -29,6 +29,7 @@ function formatCurrency(value) {
 function ProductListing() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [listing, setListing] = useState(null);
   const [allListings, setAllListings] = useState([]);
@@ -37,6 +38,7 @@ function ProductListing() {
   const [submittingBid, setSubmittingBid] = useState(false);
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const slotIndex = location.state?.slotIndex;
 
   const bidUrl = `${API_BASE_URL}/api/listings/${id}/bid`;
 
@@ -137,7 +139,8 @@ function ProductListing() {
 
   if (!id) return <div className="page-state">Missing listing id.</div>;
   if (loading) return <div className="page-state">Loading listing...</div>;
-  if (error && !listing) return <div className="page-state">Error: {error}</div>;
+  if (error && !listing)
+    return <div className="page-state">Error: {error}</div>;
   if (!listing) return <div className="page-state">No listing found.</div>;
 
   return (
@@ -172,6 +175,7 @@ function ProductListing() {
                 listing={listing}
                 formattedStartingPrice={formattedStartingPrice}
                 formattedBuyNowPrice={formattedBuyNowPrice}
+                slotIndex={slotIndex}
               />
 
               <BidForm

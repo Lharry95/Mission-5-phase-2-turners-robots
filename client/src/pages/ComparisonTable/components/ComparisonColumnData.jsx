@@ -21,7 +21,7 @@ function ComparisonColumnData() {
 
   return (
     <div className={styles.columnContainer}>
-      <ColumnDisplay data={data} category="Wooden Desks" />
+      <ColumnDisplay data={data} category="Wooden Desk" />
     </div>
   );
 }

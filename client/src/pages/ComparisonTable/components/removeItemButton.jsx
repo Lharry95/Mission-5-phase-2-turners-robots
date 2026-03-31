@@ -1,6 +1,7 @@
 import React from "react";
+import styles from "./RemoveItemButton.module.css";
 
-function RemoveItemButton() {
+function RemoveItemButton({ slotIndex, comparisonSlots, setComparisonSlots }) {
   // when remove button is clicked - column/item is removed and state is updated
   function handleRemoveItem(slotIndex) {
     const updatedSlots = [...comparisonSlots];
@@ -13,7 +14,7 @@ function RemoveItemButton() {
       <div className={styles.removeBtnContainer}>
         <button
           className={styles.removeBtn}
-          onClick={() => handleRemoveItem(index)}
+          onClick={() => handleRemoveItem(slotIndex)}
         >
           {" "}
           X{" "}

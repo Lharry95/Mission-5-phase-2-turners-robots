@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./ListingActions.css";
 
-function ListingActions() {
+function ListingActions({ product, slotIndex }) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const [added, setAdded] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const panelId = "listing-actions-panel";
 
@@ -24,6 +28,13 @@ function ListingActions() {
     if (!value.trim()) return;
     setAdded(true);
     setIsFocused(false);
+
+    navigate("/comparison/table", {
+      state: {
+        selectedItem: product,
+        slotIndex: slotIndex ?? 2,
+      },
+    });
   };
 
   const showGhostTick = isFocused && !added;
@@ -53,9 +64,7 @@ function ListingActions() {
           aria-hidden="true"
         />
 
-        <span className="listing-actions__label">
-          Add to Comparison Table
-        </span>
+        <span className="listing-actions__label">Add to Comparison Table</span>
 
         <span className="listing-actions__chevron" aria-hidden="true">
           {open ? "⌄" : "›"}
