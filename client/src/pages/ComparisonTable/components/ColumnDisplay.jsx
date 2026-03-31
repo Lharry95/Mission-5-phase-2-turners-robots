@@ -11,17 +11,33 @@ function ColumnDisplay({ data = [], category }) {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // fixes data so consistent
   function transformItem(item) {
+    const BACKEND_URL = "http://localhost:3000";
+
     return {
       ...item,
       _id: item._id,
       id: item._id || item.id,
+      // if there's different names from the database
       title: item.title || item.name || "Untitled item",
-      image:
-        item.image ||
-        (Array.isArray(item.images) ? item.images[0] : item.images) ||
-        "/uploads/placeholder.png",
-      buyNowPrice: item.buyNowPrice ?? item.price ?? "",
+      buyNowPrice: item.buyNowPrice ?? item.price ?? "0.00",
+
+      // handle different image formats safely
+      image: (() => {
+        let imagePath =
+          item.image ||
+          (Array.isArray(item.images) ? item.images[0] : item.images) ||
+          "/uploads/placeholder.png";
+
+        // If it's a relative path (starts with /), prepend backend URL
+        if (imagePath && !imagePath.startsWith("http")) {
+          imagePath = BACKEND_URL + imagePath;
+        }
+        return imagePath;
+      })(),
+
+      // prevents undefined errors
       condition: item.condition ?? "",
       dimensions: item.dimensions ?? "",
       shipping_and_pickup: item.shipping_and_pickup ?? "",
@@ -29,12 +45,17 @@ function ColumnDisplay({ data = [], category }) {
     };
   }
 
-  const fixedDbItems = data.slice(0, 2).map(transformItem);
+  // getting two items from db
+  const fixedDbItems = [data[1], data[2]]
+    .filter((item) => item)
+    .map((item) => transformItem(item));
 
+  // load from local storage - if there's already items selected then it restores them
   const [comparisonSlots, setComparisonSlots] = useState(() => {
     const saved = localStorage.getItem(`comparison_${category}`);
 
     try {
+      // if nothing's saved start with four empty slots
       const parsed = saved ? JSON.parse(saved) : [null, null, null, null];
       return Array.isArray(parsed) && parsed.length === 4
         ? parsed
@@ -45,6 +66,7 @@ function ColumnDisplay({ data = [], category }) {
     }
   });
 
+  // save to local storage whenever its updated
   const updateSlots = (updater) => {
     setComparisonSlots((prevSlots) => {
       const newSlots =
@@ -123,7 +145,12 @@ function ColumnDisplay({ data = [], category }) {
         <div className={styles.comparisonScroll} id="comparisonScroll">
           <div className={styles.comparisonContainer}>
             {comparisonSlots.map((slot, index) => (
-              <div key={index} className={styles.comparisonCard}>
+              <div
+                key={index}
+                className={`${styles.comparisonCard} ${
+                  index === 0 ? styles.firstCard : styles.otherCard
+                }`}
+              >
                 {slot ? (
                   <div>
                     <RemoveItemButton
@@ -145,23 +172,28 @@ function ColumnDisplay({ data = [], category }) {
 
                     <p>
                       <strong>Buy now</strong>
-                      <br />${slot.buyNowPrice}
+                      <br />
+                      <span className={styles.buyNow}>{slot.buyNowPrice}</span>
                     </p>
 
                     <p>
-                      <strong>Condition:</strong> {slot.condition}
+                      {index === 0 && <strong>Condition:</strong>}{" "}
+                      {slot.condition}
                     </p>
 
                     <p>
-                      <strong>Dimensions:</strong> {slot.dimensions}
+                      {index === 0 && <strong>Dimensions:</strong>}{" "}
+                      {slot.dimensions}
                     </p>
 
                     <p>
-                      <strong>Shipping:</strong> {slot.shipping_and_pickup}
+                      {index === 0 && <strong>Shipping & pick-up:</strong>}{" "}
+                      {slot.shipping_and_pickup}
                     </p>
 
                     <p>
-                      <strong>Payment:</strong> {slot.payment_options}
+                      {index === 0 && <strong>Payment Options:</strong>}{" "}
+                      {slot.payment_options}
                     </p>
 
                     <button
@@ -172,7 +204,7 @@ function ColumnDisplay({ data = [], category }) {
                         })
                       }
                     >
-                      <p className={styles.fullDetailsBtn}>View Full Details</p>
+                      View Full Details
                     </button>
                   </div>
                 ) : (

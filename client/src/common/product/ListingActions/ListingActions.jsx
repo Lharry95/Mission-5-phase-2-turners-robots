@@ -32,7 +32,7 @@ function ListingActions({ product, slotIndex }) {
     navigate("/comparison/table", {
       state: {
         selectedItem: product,
-        slotIndex: slotIndex ?? 0,
+        slotIndex: slotIndex ?? 2,
       },
     });
   };
