@@ -29,7 +29,7 @@ You will also need to add a valid MonogDB local database route which you need to
 
 ---
 ## Search Results Page
-The 'Search Results' page displays a list of listings from the MongoDB Database and displays them to the user, depending on the search query provided.
+The 'Search Results' page fetches a list of listings from the MongoDB Database and displays them to the user, depending on the search query provided.
 
 ### Features
 - Fetches all listings that meet the search criteria from the database
