@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./RemoveItemButton.module.css";
 
 function RemoveItemButton({ slotIndex, comparisonSlots, setComparisonSlots }) {
