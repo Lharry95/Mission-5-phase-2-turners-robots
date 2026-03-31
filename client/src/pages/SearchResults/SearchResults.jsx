@@ -12,13 +12,14 @@ import Footer from "../../common/Footer";
 
 function SearchResults() {
   const navigate = useNavigate();
-  const [listings, setListings] = useState([]);
-  const [sortBy, setSortBy] = useState("Best Match");
-  const [sortDropdown, setSortDropdown] = useState(false);
-  const [watchlist, setWatchlist] = useState(true);
-  const [quickview, setQuickview] = useState(false);
-  const [currentListing, setCurrentListing] = useState(0);
+  const [listings, setListings] = useState([])            // Array of listings imported from MonbgoDB
+  const [sortBy, setSortBy] = useState("Best Match")      // Stores "Sort by:" state
+  const [sortDropdown, setSortDropdown] = useState(false) // Dropdown toggle for "Sort by:"
+  const [watchlist, setWatchlist] = useState(true)        // Toggle for adding to watchlist (top right of listing)
+  const [quickview, setQuickview] = useState(false)       // Toggle for quickview overlay
+  const [currentListing, setCurrentListing] = useState(0) // Stores current listing for use quickview overlay
 
+  // Search query functionality
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
   const slotIndex = searchParams.get("slotIndex");
@@ -29,6 +30,7 @@ function SearchResults() {
       return alert("Search query is empty");
     }
 
+    // Fetching data array from backend depending on query and stores it in 'listings' useState
     fetch(`http://localhost:3000/search?query=${query}`)
       .then((res) => res.json())
       .then((data) => {
@@ -37,11 +39,13 @@ function SearchResults() {
       .catch((err) => console.error(err));
   }, [query]);
 
+  // Importing images for each image the 'assets' folder that end in '.png'
   const image = import.meta.glob("./assets/*.png", {
     eager: true,
     query: "?url",
   });
 
+  // Dyanmically fetches image from 'assets' folder depending on image name of array entry
   function fetchImagePath(filename) {
     const path = `./assets/${filename}`;
 
@@ -56,7 +60,7 @@ function SearchResults() {
     console.log(`Watchlist status updated for id: ${id}`);
   };
 
-  // Used for debugging in the case where data was not being displayed to the DOM
+  // Used for debugging and checking in the case where data was not being displayed to the DOM (keep just in case)
   // listings.map((listing) => console.log(fetchImagePath(listing.image)))
 
   return (
@@ -295,7 +299,9 @@ function SearchResults() {
             </div>
           ))}
 
-          {/* <div className="itemCard">
+          {/* Used for old prototype and PoC design */}
+        
+        {/* <div className="itemCard">
           <div className="itemImage">Image</div>
           <div className="itemInfo">
             <div className="itemTitle">Title</div>
@@ -303,6 +309,7 @@ function SearchResults() {
             <div className="itemPrice">Price</div>
           </div>
         </div> */}
+
         </div>
       </div>
       <Footer />
@@ -311,22 +318,3 @@ function SearchResults() {
 }
 
 export default SearchResults;
-
-// {quickview &&
-//               (
-//                 <div className="quickviewOverlay" onClick={() => setQuickview(false)}>
-//                   <div className="quickviewMain">
-//                     <button className="navLeft" onClick={() => setCurrentIndex(prev => (prev - 1 + listings.length) % listings.length)}>
-//                       <span>&#8592;</span>
-//                     </button>
-
-//                     <div>
-//                       <img src={fetchImagePath(listings[currentListing].image)} className="quickviewImage"/>
-//                     </div>
-
-//                     <button className="navRight" onClick={() => setCurrentIndex(prev => (prev + 1) % listings.length)}>
-//                       <span>&#8594;</span>
-//                     </button>
-//                   </div>
-//                 </div>
-//               )}

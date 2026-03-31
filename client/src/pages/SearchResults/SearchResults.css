@@ -25,14 +25,6 @@
     color: rgb(68, 65, 61)
 }
 
-@media (max-width: 750px)
-{
-    .paths
-    {
-        display: none;
-    }
-}
-
 .homePath
 {
     margin-right: 5px;
@@ -41,7 +33,7 @@
     font-size: inherit;
     border: none;
     cursor: pointer;
-    
+    font-weight: bold;
 }
 
 .heading
@@ -120,16 +112,6 @@
     padding: 20px;
 }
 
-@media (max-width: 750px)
-{
-    .searchResultsHeader
-    {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
 .sortingArea
 {
     position: relative;
@@ -200,16 +182,6 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 32px;
-}
-
-@media (max-width: 750px)
-{
-    .resultsGrid
-    {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 5px;
-        gap: 5px;
-    }
 }
 
 .listingCard
@@ -319,29 +291,11 @@
     padding: 5px 0px 0px 5px;
 }
 
-@media (max-width: 750px)
-{
-    .listingTitle
-    {
-        margin-bottom: 0.25vh;
-        font-size: 16px;
-    }
-}
-
 .listingDescription
 {
     font-size: clamp(10.5px, 0.75vw, 32px);
     padding: 0px 10px 0px 10px;
     margin-bottom: 2vh;
-}
-
-@media (max-width: 750px)
-{
-    .listingDescription
-    {
-        padding: 1px;
-        margin-bottom:0.25vh;
-    }
 }
 
 .listingPrice
@@ -365,14 +319,53 @@
     font-size: clamp(18px, 3vw, 32px);
 }
 
+/* Mobile repsoniveness */
+@media (max-width: 750px)
+{
+    .paths
+    {
+        display: none;
+    }
+
+    .searchResultsHeader
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .resultsGrid
+    {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 5px;
+        gap: 5px;
+    }
+
+    .listingTitle
+    {
+        margin-bottom: 0.25vh;
+        font-size: 16px;
+    }
+
+    .listingDescription
+    {
+        padding: 1px;
+        margin-bottom:0.25vh;
+    }
+}
+
+
+/* ----------------------------------- */
+
+
 /* Quickview overlay */
 .quickviewOverlay
 {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.027);
     backdrop-filter: blur(5px);
     display: flex;
@@ -384,8 +377,8 @@
 .closeQuickview
 {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: -15px;
+    right: -15px;
     padding: 5px 10px;
     border-radius: 50px;
     background: rgb(168, 168, 168);
@@ -408,7 +401,7 @@
 {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 25px;
     background: white;
     border-radius: 25px;
     align-items: center;
@@ -419,7 +412,6 @@
 {
     display: flex;
     position: relative;
-    padding: 20px;
     flex-direction: row;
     gap: 20px;
     background: white;
@@ -720,7 +712,6 @@ input[type="number"]
     cursor: pointer;
 }
 
-/* Full details button */
 .fullDetails
 {
     display: flex;
@@ -743,9 +734,10 @@ input[type="number"]
     font-weight: bold;
     border-radius: 5px;
     box-shadow:0px 3px 5px rgba(68, 65, 61, 0.5);
+    cursor: pointer;
 }
 
-/* Mobile responsivemess */
+/* Mobile responsiveness (Quickview overlay)*/
 
 /* This is to hide the overflow from the header and stop if from affecting the viewport */
 html, body
@@ -784,7 +776,7 @@ html, body
 
     .quickviewListing
     {
-        width: 100%;
+        width: 90%;
     }
 
     .quickviewOverlay
@@ -799,6 +791,4 @@ html, body
         width: 100%;
         max-width: 500px;
     }
-
-
 }
