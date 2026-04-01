@@ -28,7 +28,7 @@
 .desks {
   color: #f9af2c;
 }
-
+/* for mobile responsiveness */
 .goBackBtn {
   color: #4854d3;
   text-decoration: none;
@@ -58,6 +58,7 @@
   position: relative;
 }
 
+/* yellow background stripes behind comparison table */
 .comparisonContainer::before {
   content: "";
   position: absolute;
@@ -134,11 +135,11 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Buy now section - ALL CARDS */
+/* Buy now price section - ALL CARDS */
 .comparisonCard p:nth-of-type(1) {
   text-align: center;
   color: black;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   line-height: 1;
   padding-top: 0.8rem;
   padding-bottom: 0.5rem;
@@ -151,11 +152,12 @@
   border-top: 1px solid #f0f0f0;
 }
 
+/* buy now title */
 .comparisonCard p:nth-of-type(1) strong {
   display: block;
   font-weight: 400;
   color: black;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 /* buy now price */
@@ -193,6 +195,7 @@
   background-color: white;
 }
 
+/* labels for column 1 */
 .firstCard p:nth-of-type(2) strong,
 .firstCard p:nth-of-type(3) strong,
 .firstCard p:nth-of-type(4) strong,
@@ -221,18 +224,19 @@
   color: #666;
 }
 
-/* Odd rows (2, 4) - GREY */
+/* Odd rows (2, 4) - GREY for other columns (2/3/4) */
 .otherCard p:nth-of-type(2),
 .otherCard p:nth-of-type(4) {
   background-color: #f2f2f2;
 }
 
-/* Even rows (3, 5) - WHITE */
+/* Even rows (3, 5) - WHITE for columns (2/3/4) */
 .otherCard p:nth-of-type(3),
 .otherCard p:nth-of-type(5) {
   background-color: white;
 }
 
+/* to remove labels from other columns beside the frist one */
 .otherCard p:nth-of-type(2) strong,
 .otherCard p:nth-of-type(3) strong,
 .otherCard p:nth-of-type(4) strong,
@@ -458,7 +462,6 @@
     height: 44px;
     border: none;
     border-radius: 12px;
-    background: #4854d3;
     color: white;
     font-size: 1.8rem;
     line-height: 1;
@@ -479,7 +482,6 @@
     height: 44px;
     border: none;
     border-radius: 12px;
-    background: #4854d3;
     color: white;
     font-size: 1.8rem;
     cursor: pointer;
