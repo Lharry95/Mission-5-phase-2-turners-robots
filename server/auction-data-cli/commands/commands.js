@@ -8,10 +8,12 @@ const {
   listItems,
   deleteAllItems,
   deleteAllListings,
+  seedSearchListings
 } = require("../index.js");
 
 const inquirer = require("inquirer").default;
 const { questionsForItems } = require("./prompts.js");
+const searchData = require("../data/searchData.js");
 
 const program = new Command();
 
@@ -54,4 +56,10 @@ program
   .description("Deleting all listings from MongoDB")
   .action(() => deleteAllListings());
   
+// seed search listings
+program
+  .command("seedSearch")
+  .description("Seed all listings related to the search results page")
+  .action(() => seedSearchListings())
+
 program.parse(process.argv);

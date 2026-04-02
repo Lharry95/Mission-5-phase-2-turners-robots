@@ -2,9 +2,11 @@ require("dotenv").config({ path: "../.env" });
 const mongoose = require("mongoose");
 const Item = require("../models/itemModel");
 const Listing = require("../models/listingModel");
+const Search = require("../models/searchModel")
 const connectDb = require("../config/db");
 const seedData = require("./data/seedData");
 const listingsSeedData = require("./data/listingsSeedData");
+const searchData = require("./data/searchData")
 
 // map global promise - get rid of warning
 mongoose.Promise = global.Promise;
@@ -89,6 +91,24 @@ const deleteAllListings = async () => {
   }
 };
 
+// seed search listings
+const seedSearchListings = async () =>
+{
+  try
+  {
+    await connectDb()
+    await Search.deleteMany()
+    await Search.insertMany(searchData)
+    console.log("All search listings seeded successfully.")
+  } catch (error)
+  {
+    console.error("Listings could not be seeded:", error)
+  } finally
+  {
+    mongoose.connection.close()
+  }
+}
+
 module.exports = {
   addItem,
   listItems,
@@ -96,4 +116,5 @@ module.exports = {
   seedItems,
   seedListings,
   deleteAllListings,
+  seedSearchListings
 };

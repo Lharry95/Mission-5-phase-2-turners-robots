@@ -5,6 +5,7 @@ const path = require("path");
 const connectDB = require("./config/db");
 const listingRoutes = require("./routes/listingRoutes");
 const Item = require("./models/itemModel");
+const Search = require("./models/searchModel")
 
 dotenv.config();
 
@@ -81,11 +82,11 @@ app.get("/search", async (req, res) => {
 
     const keyWords = query.split(" ");
 
-    const listings = await Item.db.collection("auction-listings").find({
+    const listings = await Search.find({
       $or: keyWords.map((query) => ({
         title: { $regex: query, $options: "i" },
       })),
-    }).toArray();
+    });
 
     res.json(listings);
   } catch (error) {
