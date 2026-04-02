@@ -56,7 +56,7 @@ This should seed all required data for use with the search results page.
 **Backend:** `GET /api/search`
 
 ### Notes
-Anything that lacks function such as the filters in the header of the search results area, and the bidding area within the quick view overlay, was decided with the UX team after discussion, and whether that fit the scope of the project. Additionally, the extra details are the same across the different quick overlay previews because that information is not stored within the database for this page, and there is not enough information given to fill these out for each product. 
+Anything that lacks function such as the filters in the header of the search results area, and the bidding area within the quick view overlay, was decided with the UX team after discussion, and whether that fit the scope of the project. The 'view details' buttonn on the quick overlay only works for the "Wooden Desk" entry, because of database ID mismatches, so only one was hardcoded to work for the sake of demonstration. Additionally, the extra details are the same across the different quick overlay previews because that information is not stored within the database for this page, and there is not enough information given to fill these out for each product.
 
 ---
 
