@@ -62,15 +62,41 @@ The Product Listing Page displays a product listing from MongoDB using a dynamic
 - Supports navigation to the comparison table
 - Uses seeded listings data so the page can be tested locally by the team
 
+
+---
+## Comaprison Table Page
+The 'Comparison Table' page fetches a listing from the MongoDB Database and displays them to the user. The item gets chosen from the product listing page and gets sent to the comparison table. 
+
+### Features
+- Fetches a listing that meet the search criteria from the database
+- Places this information into the comparison table
+  - Displays the following:
+    - Title
+    - Description
+    - Price
+    - Dimension
+    - Condition
+    - Shipping & pick ups
+    - Payments Options: 
+
+### Routes
+**Frontend:** `http://localhost:5173/comparison/table` *(This will be appended with the search query)*
+
+**Backend:** `GET /api/search`
+
+---
+
 ### Routes
 
 #### Frontend
 - `/productlisting/:id`
+- `/comparison/table`
 
 #### Backend
 - `GET /api/listings` fetch all listings
 - `GET /api/listings/:id` fetch a listing by ID
 - `PATCH /api/listings/:id/bid` submit a higher bid for a listing
+- `GET /comparison/table` submit a higher bid for a listing
 
 ### Example bid request
 ```json
@@ -81,6 +107,7 @@ The Product Listing Page displays a product listing from MongoDB using a dynamic
 
 ### Example test route
 - `http://localhost:5173/productlisting/69c4fb2929691828d2f6f6dd`
+- `http://localhost:5173/comparison/table`
 
 ### Listings seed command
 Run the listings seed so the same product data is available locally:
