@@ -31,6 +31,15 @@ You will also need to add a valid MonogDB local database route which you need to
 ## Search Results Page
 The 'Search Results' page fetches a list of listings from the MongoDB Database and displays them to the user, depending on the search query provided.
 
+### Usage
+To use the search results page and it's associated functions, there needs to be the associated seeded data to pull from. To do this, make sure you have the required.env from the backend and then, run the following in the console:
+
+```bash
+cd server/auction-data-cli
+node commands/commands.js seedSearch
+```
+This should seed all required data for use with the search results page.
+
 ### Features
 - Fetches all listings that meet the search criteria from the database
 - Places this information in the form of an array in a grid
