@@ -176,7 +176,7 @@ function SearchResults() {
                     const currentId = listings[currentListing]?._id;
                     if (currentId === "69ca14f388a891d7e9185c04") {
                       window.location.href =
-                        "http://localhost:5173/productlisting/69c4fb2929691828d2f6f6dd";
+                        "http://localhost:5173/productlisting/69c775f33baea202ff5f3a42";
                     } else console.log(currentId);
                   }}
                 >
