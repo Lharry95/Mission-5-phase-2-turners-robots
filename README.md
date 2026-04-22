@@ -108,7 +108,7 @@ The 'Comparison Table' page fetches a listing from the MongoDB Database and disp
 - `GET /api/listings` fetch all listings
 - `GET /api/listings/:id` fetch a listing by ID
 - `PATCH /api/listings/:id/bid` submit a higher bid for a listing
-- `GET /comparison/table` submit a higher bid for a listing
+- `GET /comparison/table` compare one listing to another
 
 ### Example bid request
 ```json
